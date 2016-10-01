@@ -1,0 +1,41 @@
+[user]
+	name = tfing
+	email = tf1515@gmail.com
+[alias]
+	co = checkout
+	ci = commit
+	cia = commit --amend
+	diw = diff --ignore-space-at-eol --ignore-space-change --word-diff
+	di = diff --ignore-space-at-eol --ignore-space-change 
+	dis = diff  --ignore-space-at-eol --ignore-space-change --staged 
+	dit = difftool --no-prompt
+	st = status -s -b 
+	br = branch
+	re = remote
+	lg2 = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lgs = log --graph --all --decorate=full --format=format:'%C(yellow)%h%C(reset) - %C(bold white)(%ci)%C(reset) %C(bold green)%f%C(reset)%C(bold red)%d%C(reset) %C(white)%s%C(reset)%C(bold cyan) - <%cn>%C(reset)'
+	lg = log --graph --stat
+	mf = merge --no-ff
+	rb = rebase
+	pick = cherry-pick
+	pickc = cherry-pick --continue
+	picka = cherry-pick --abort
+	sh = show
+	aa = add --all :/
+	ru = remote update --prune
+	sf = svn fetch
+	sd = svn dcommit
+
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+
+[diff]
+	tool = vimdiff
+
+[core]
+	editor = vim
+	autocrlf = false
+    pager = less -RS
+
