@@ -39,3 +39,5 @@
 	autocrlf = false
     pager = less -RS
 
+[push]
+	default = simple
