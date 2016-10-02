@@ -134,5 +134,6 @@ complete -o default -o nospace -F _git g
 
 declare -x LS_COLORS="di=01;36:ln=01;31:"
 
-
+# disable hanged scroll
+stty -ixon 
 

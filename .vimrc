@@ -48,6 +48,6 @@ map <C-n> :tabnew<CR>
 " tg : previous tab
 :nmap tg gT
 " <C-s>  : save file in normal/insert mode. Note: add 'stty -ixon' in .bashrc
-" or .bash_profile to prevent hanged scorll
+" or .bash_profile to prevent hanged scroll
 :nmap <C-s> :w<CR>
 :imap <C-s> <ESC>:w<CR>
