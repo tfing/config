@@ -51,3 +51,11 @@ map <C-n> :tabnew<CR>
 " or .bash_profile to prevent hanged scroll
 :nmap <C-s> :w<CR>
 :imap <C-s> <ESC>:w<CR>
+
+" my <C-]> jump doesn't work on lubuntu 16.04.1 + vim 7.4 + ctags
+" Use a new keymapping to trigger <C-]>
+map <C-j> <C-]>
+
+
+
+
