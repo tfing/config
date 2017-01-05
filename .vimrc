@@ -1,17 +1,34 @@
 " Theme
 :color desert
+
 " Replace tab with 4 spaces
 set tabstop=4 shiftwidth=4 expandtab
+
 " Show line number
 set number
+
 " Enable mouse 
 set mouse=a
+
 " significant cursor line
 set cursorline
+
 " highlight search key
 set hls
+
 " keep last 3 line when scroll
 set scrolloff=3
+
+set showcmd		" display incomplete commands
+
+set t_Co=256
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+  syntax on
+  set hlsearch
+endif
 
 " Vundle
 set nocompatible
@@ -20,10 +37,10 @@ filetype off
 set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+"Plugin 'SirVer/ultisnips'
+"Plugin 'honza/vim-snippets'
 Plugin 'steffanc/cscopemaps.vim'
-Plugin 'ntpeters/vim-better-whitespace'
+"Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'The-NERD-tree'
 call vundle#end()
 

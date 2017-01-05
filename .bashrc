@@ -137,3 +137,5 @@ declare -x LS_COLORS="di=01;36:ln=01;31:"
 # disable hanged scroll
 stty -ixon 
 
+# support 256 color 
+export TERM="xterm-256color"
