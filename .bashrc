@@ -118,7 +118,7 @@ alias ls='ls -hF --color=tty'                 # classify files in colour
 # alias dir='ls --color=auto --format=vertical'
 # alias vdir='ls --color=auto --format=long'
 alias ll='ls -l --block-size=KB'                              # long list
-alias la='ls -A'                              # all but . and ..
+alias la='ls -al'                             # all 
 alias lc='ls -C'                              # show by column
 alias lt='ll -t'                              # show by time, newest at top
 alias my='sh mybuild.sh'
