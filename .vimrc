@@ -73,6 +73,20 @@ map <C-n> :tabnew<CR>
 " Use a new keymapping to trigger <C-]>
 map <C-j> <C-]>
 
+" ==================
+" search vim wiki for 'Quick command in insert mode'
+" ------------------
+" go to just before the 1st non-blank text of the line
+" like go to the head of line, then move to the head of first word
+inoremap II <ESC>I
 
+" go to the end of line
+inoremap AA <ESC>A
 
+" start editing on a new line above the current line
+inoremap OO <ESC>O
 
+" save file
+inoremap SS <ESC>:w<CR>
+
+"==================
