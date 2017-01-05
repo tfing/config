@@ -87,6 +87,9 @@ inoremap AA <ESC>A
 inoremap OO <ESC>O
 
 " save file
-inoremap SS <ESC>:w<CR>
+inoremap WW <ESC>:w<CR>
+
+" save file and quit
+inoremap WQ <ESC>:wq<CR>
 
 "==================
