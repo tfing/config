@@ -139,3 +139,12 @@ stty -ixon
 
 # support 256 color 
 export TERM="xterm-256color"
+
+function git_branch {
+    ref=$(git symbolic-ref HEAD 2> /dev/null) || return;
+    echo "("${ref#refs/heads/}")";
+}
+
+# display current directory(\w) and git branch
+# "\[\e[1;32m\]" and "\[\e[0m\]" are colors
+PS1='\[\e[1;32m\]\w\[\e[0m\] \[\e[1;35m\]$(git_branch)\[\e[0m\] \$ '
