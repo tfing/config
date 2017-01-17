@@ -52,7 +52,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 autocmd FileType c,cpp autocmd BufWritePre <buffer> %s/\s\+$//e
 
 " Hotkeys
-" F5 : open NERD Tree 
+" F5 : open NERD Tree
 nnoremap <silent> <F5>  :NERDTreeToggle<CR>
 " F9 : highlight toggle
 map <F8> :set hlsearch!<CR>
@@ -62,8 +62,6 @@ map <C-l> :tabn<CR>
 map <C-h> :tabp<CR>
 " <C-n> : new tab
 map <C-n> :tabnew<CR>
-" tg : previous tab
-:nmap tg gT
 " <C-s>  : save file in normal/insert mode. Note: add 'stty -ixon' in .bashrc
 " or .bash_profile to prevent hanged scroll
 :nmap <C-s> :w<CR>
