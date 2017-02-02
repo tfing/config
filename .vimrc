@@ -72,7 +72,7 @@ map <C-n> :tabnew<CR>
 map <C-j> <C-]>
 
 " ==================
-" search vim wiki for 'Quick command in insert mode'
+" from vim wiki 'Quick command in insert mode'
 " ------------------
 " go to just before the 1st non-blank text of the line
 " like go to the head of line, then move to the head of first word
@@ -81,8 +81,9 @@ inoremap II <ESC>I
 " go to the end of line
 inoremap AA <ESC>A
 
+" Delete this because conflicts with 'ROOT'
 " start editing on a new line above the current line
-inoremap OO <ESC>O
+" inoremap OO <ESC>O
 
 " save file
 inoremap WW <ESC>:w<CR>
