@@ -1,6 +1,11 @@
 " Theme
 :color desert
 
+" Use system clipboard to do copy/paste
+" So that, I can directly 'y' in vim and paster outside vim
+" Or, copy sth outside vim and 'p' in vim
+set clipboard=unnamedplus
+
 " Replace tab with 4 spaces
 set tabstop=4 shiftwidth=4 expandtab
 
@@ -11,7 +16,8 @@ set number
 set mouse=a
 
 " significant cursor line
-set cursorline
+" A little bit annoying when using '_' in text
+" set cursorline
 
 " highlight search key
 set hls
