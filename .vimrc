@@ -1,5 +1,8 @@
 " Theme
-:color desert
+color desert
+
+let mapleader = "-"
+let maplocalleader = "\\"
 
 " Use system clipboard to do copy/paste
 " So that, I can directly 'y' in vim and paster outside vim
@@ -10,7 +13,7 @@ set clipboard=unnamedplus
 set tabstop=4 shiftwidth=4 expandtab
 
 " Show line number
-set number
+set number numberwidth=4
 
 " Enable mouse 
 set mouse=a
@@ -20,13 +23,15 @@ set mouse=a
 " set cursorline
 
 " highlight search key
-set hls
+set hlsearch
 
 " keep last 3 line when scroll
 set scrolloff=3
 
-set showcmd		" display incomplete commands
+" display incomplete commands
+set showcmd		
 
+" use 256 color mode
 set t_Co=256
 
 " Switch syntax highlighting on, when the terminal has colors
@@ -57,32 +62,59 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " Delete trailing whitespace on c,cpp file type
 autocmd FileType c,cpp autocmd BufWritePre <buffer> %s/\s\+$//e
 
-" Hotkeys
+
+" ================= 
+" Key mappings 
+" =================
+
+" edit .vimrc
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+" load .vimrc
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+" esc insert mode
+inoremap jk <esc>
+inoremap <esc> <nop>
+
+" esc visual mode
+vnoremap ui <esc>
+vnoremap <esc> <nop>
+
+" move to line head
+nnoremap H ^
+
+" move to line end
+nnoremap L $
+
+" surround a word with "
+nnoremap <leader>"  viw<esc>a"<esc>hbi"<esc>lel
+
 " F5 : open NERD Tree
 nnoremap <silent> <F5>  :NERDTreeToggle<CR>
 " F9 : highlight toggle
-map <F8> :set hlsearch!<CR>
+nnoremap <F8> :set hlsearch!<CR>
 " <C-h> : left tab
-map <C-l> :tabn<CR>
+nnoremap <C-l> :tabn<CR>
 " <C-l> : right tab
-map <C-h> :tabp<CR>
+nnoremap <C-h> :tabp<CR>
 " <C-n> : new tab
-map <C-n> :tabnew<CR>
+nnoremap <C-n> :tabnew<CR>
 " <C-s>  : save file in normal/insert mode. Note: add 'stty -ixon' in .bashrc
 " or .bash_profile to prevent hanged scroll
-:nmap <C-s> :w<CR>
-:imap <C-s> <ESC>:w<CR>
+nnoremap <C-s> :w<CR>
+inoremap <C-s> <ESC>:w<CR>
 
 " my <C-]> jump doesn't work on lubuntu 16.04.1 + vim 7.4 + ctags
 " Use a new keymapping to trigger <C-]>
-map <C-j> <C-]>
+nnoremap <C-j> <C-]>
 
-" ==================
+" ------------------
 " from vim wiki 'Quick command in insert mode'
 " ------------------
 " go to just before the 1st non-blank text of the line
 " like go to the head of line, then move to the head of first word
-inoremap II <ESC>I
+inoremap II <ESC>I 
 
 " go to the end of line
 inoremap AA <ESC>A
@@ -96,5 +128,14 @@ inoremap WW <ESC>:w<CR>
 
 " save file and quit
 inoremap WQ <ESC>:wq<CR>
+" -----------------
 
-"==================
+
+" ================== 
+" Abbreviations 
+" ==================
+
+iabbrev @@ tf1515@gmail.com 
+iabbrev ssig <cr>TingHan<cr>tf1515@gmail.com
+
+
