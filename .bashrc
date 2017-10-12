@@ -123,6 +123,7 @@ alias lc='ls -C'                              # show by column
 alias lt='ll -t'                              # show by time, newest at top
 alias my='sh mybuild.sh'
 alias g='git'
+alias gr='grep -r -n'
 complete -o default -o nospace -F _git g
 # alias up='sh upload.sh'
 
