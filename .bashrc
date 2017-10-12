@@ -111,19 +111,20 @@ alias rm='rm -Iv'	# -I ask once for removing multiple files
 # Misc :)
 # alias less='less -r'                          # raw control characters
 # alias whence='type -a'                        # where, of a sort
-alias grep='grep --color'                     # show differences in colour
+alias grep='grep --color'                       # show differences in colour
+alias gr='grep -r -n'                           # recursive search, show line number
+alias fgr='fgrep -r -n --color'                 # search fixed string for speed
 
 # Some shortcuts for different directory listings
-alias ls='ls -hF --color=tty'                 # classify files in colour
+alias ls='ls -hF --color=tty'                   # classify files in colour
 # alias dir='ls --color=auto --format=vertical'
 # alias vdir='ls --color=auto --format=long'
-alias ll='ls -l --block-size=KB'                              # long list
-alias la='ls -al'                             # all 
-alias lc='ls -C'                              # show by column
-alias lt='ll -t'                              # show by time, newest at top
+alias ll='ls -l --block-size=KB'                 # long list
+alias la='ls -al'                                # all 
+alias lc='ls -C'                                 # show by column
+alias lt='ll -t'                                 # show by time, newest at top
 alias my='sh mybuild.sh'
 alias g='git'
-alias gr='grep -r -n'
 complete -o default -o nospace -F _git g
 # alias up='sh upload.sh'
 
