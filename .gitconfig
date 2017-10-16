@@ -22,6 +22,7 @@
 	picka = cherry-pick --abort
 	sh = show
 	aa = add --all :/
+    ap = add --patch
 	ru = remote update --prune
 	sf = svn fetch
 	sd = svn dcommit
