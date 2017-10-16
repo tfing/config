@@ -34,6 +34,11 @@ set showcmd
 " use 256 color mode
 set t_Co=256
 
+" case-insensitive search
+set ignorecase
+" if pattern contains capital letter, do case-sensitive search
+set smartcase
+
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
@@ -97,10 +102,10 @@ vnoremap ui <esc>
 vnoremap <esc> <nop>
 
 " move to line head
-nnoremap H ^
+nnoremap <leader>h ^
 
 " move to line end
-nnoremap L $
+nnoremap <leader>l $
 
 " surround a word with "
 nnoremap <leader>"  viw<esc>a"<esc>hbi"<esc>lel
@@ -167,3 +172,6 @@ nnoremap <leader>/ I//<ESC>
 
 " remove first found '//' 
 nnoremap <leader>d/ :s:\(\s\=\)\/\/:\1:<ESC>
+
+" surround line with /* */
+nnoremap <leader>* I/* <ESC>A */<ESC>
