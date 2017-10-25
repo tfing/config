@@ -133,10 +133,15 @@ alias g='git'
 complete -o default -o nospace -F _git g
 # alias up='sh upload.sh'
 
-alias   ..='cd ..'
-alias  ...='cd ../../'
-alias   .3='cd ../../..'
-alias   .4='cd ../../../..'
+alias      ..='cd ..'
+alias     ...='cd ../..'
+alias    ....='cd ../../..'
+alias   .....='cd ../../../..'
+alias  ......='cd ../../../../..'
+alias      .3='cd ../../..'
+alias      .4='cd ../../../..'
+alias      .5='cd ../../../../..'
+alias      .6='cd ../../../../../..'
 
 # Functions
 # #########
