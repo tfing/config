@@ -111,9 +111,14 @@ alias rm='rm -Iv'	# -I ask once for removing multiple files
 # Misc :)
 # alias less='less -r'                          # raw control characters
 # alias whence='type -a'                        # where, of a sort
-alias grep='grep --color'                       # show differences in colour
-alias gr='grep -rnIi'                           # recursive search(-r), show line number(-n), ignore binary(-I), ignore case(-i)
-alias fgr='fgrep -rnIi --color'                 # search fixed string for speed
+
+# recursive search(-r), show line number(-n)
+# ignore binary(-I), ignore case(-i)
+# show differences in colour (--color)
+GREP_OPTIONS="-rnIi --exclude-dir=.git --exclude-from=tags --color"
+alias grep="grep $GREP_OPTIONS"         
+alias gr="grep"           
+alias fgr="fgrep $GREP_OPTIONS" # search fixed string for speed
 
 # Some shortcuts for different directory listings
 alias ls='ls -hF --color=tty'                   # classify files in colour
