@@ -39,6 +39,9 @@ set ignorecase
 " if pattern contains capital letter, do case-sensitive search
 set smartcase
 
+" search tag files in current or upto parent folders
+set tags=./tags,tags;
+
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
@@ -58,6 +61,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'steffanc/cscopemaps.vim'
 "Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'The-NERD-tree'
+Plugin 'scrooloose/nerdcommenter' "comment: <leader>cc, uncomment: <leader>cu
 call vundle#end()
 
 filetype plugin indent on
@@ -134,7 +138,7 @@ nnoremap <C-j> <C-]>
 " ------------------
 " go to just before the 1st non-blank text of the line
 " like go to the head of line, then move to the head of first word
-inoremap II <ESC>I 
+inoremap II <ESC>I
 
 " go to the end of line
 inoremap AA <ESC>A
