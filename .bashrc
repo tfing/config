@@ -115,7 +115,7 @@ alias rm='rm -Iv'	# -I ask once for removing multiple files
 # recursive search(-r), show line number(-n)
 # ignore binary(-I), ignore case(-i)
 # show differences in colour (--color)
-GREP_OPTIONS="-rnI --exclude-dir={prebuilt,.git} --exclude=tags --color"
+GREP_OPTIONS="-rnI --exclude-dir={prebuilt,.git} --exclude={tags,*.d,*.o,*.a} --color"
 alias grep="grep $GREP_OPTIONS"         
 alias gR='grep'
 alias gr='gR -i' #ignore case(-i) 
@@ -170,3 +170,12 @@ PS1='\[\e[1;32m\]\w\[\e[0m\] \[\e[1;35m\]$(git_branch)\[\e[0m\]\$ '
 
 export GOPATH=$HOME/gopath
 export PATH=$GOPATH:$GOPATH/bin:$PATH
+
+ARCGNU=$HOME/arc_gnu
+export PATH=$ARCGNU/bin:$ARCGNU/eclipse:$PATH
+
+NSIM=$HOME/test/MetaWare_Linux/nSIM/nSIM
+export PATH=$NSIM/bin:$PATH
+
+LM_LICENSE_FILE=27000@mtklc12
+export LM_LICENSE_FILE
