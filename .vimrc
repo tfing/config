@@ -1,3 +1,48 @@
+"==================================================
+" Vundle 
+"==================================================
+
+set nocompatible
+filetype off
+
+set runtimepath+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+"Plugin 'SirVer/ultisnips'
+"Plugin 'honza/vim-snippets'
+Plugin 'steffanc/cscopemaps.vim'
+"Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'The-NERD-tree'
+Plugin 'scrooloose/nerdcommenter' "comment: <leader>cc, uncomment: <leader>cu
+Plugin 'craigemery/vim-autotag'
+call vundle#end()
+
+filetype plugin indent on
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+"==================================================
+" Plugin configurations
+"==================================================
+
+" Close VIM if the only left open window is NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary" ) | q | endif
+" Delete trailing whitespace on c,cpp file type
+autocmd FileType c,cpp autocmd BufWritePre <buffer> %s/\s\+$//e
+
+let g:autotagTagsFile="tags"
+let g:autotagExcludeSuffixes "tml.xml.o.a.d.xlsx"
+
+"==================================================
+" VIM configurations
+"==================================================
+
 " Theme
 color desert
 
@@ -49,31 +94,9 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
-" Vundle
-set nocompatible
-filetype off
-
-set runtimepath+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
-"Plugin 'SirVer/ultisnips'
-"Plugin 'honza/vim-snippets'
-Plugin 'steffanc/cscopemaps.vim'
-"Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'The-NERD-tree'
-Plugin 'scrooloose/nerdcommenter' "comment: <leader>cc, uncomment: <leader>cu
-call vundle#end()
-
-filetype plugin indent on
-
-" Close VIM if the only left open window is NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary" ) | q | endif
-" Delete trailing whitespace on c,cpp file type
-autocmd FileType c,cpp autocmd BufWritePre <buffer> %s/\s\+$//e
-
-" ================= 
+"==================================================
 " Status line
-" =================
+"==================================================
 
 set statusline=
 set statusline+=%1*\[%n]                                  "buffernr
@@ -87,9 +110,9 @@ hi User2 ctermfg=3  ctermbg=0
 hi User6 ctermfg=3  ctermbg=4
 set laststatus=2
 
-" ================= 
+"==================================================
 " Key mappings 
-" =================
+"==================================================
 
 " edit .vimrc
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -133,9 +156,9 @@ inoremap <C-s> <ESC>:w<CR>
 " Use a new keymapping to trigger <C-]>
 nnoremap <C-j> <C-]>
 
-" ------------------
+"==================================================
 " from vim wiki 'Quick command in insert mode'
-" ------------------
+"==================================================
 " go to just before the 1st non-blank text of the line
 " like go to the head of line, then move to the head of first word
 inoremap II <ESC>I
@@ -155,9 +178,9 @@ inoremap WQ <ESC>:wq<CR>
 " -----------------
 
 
-" ================== 
+"==================================================
 " Abbreviations 
-" ==================
+"==================================================
 
 " insert mode
 iabbrev @@ tf1515@gmail.com 
@@ -167,9 +190,9 @@ iabbrev ssig <cr>TingHan<cr>tf1515@gmail.com
 " expand 'tn' to 'tabnew' automatically when typing command
 cabbrev tn tabnew
 
-" ==================
+"==================================================
 " Programming related 
-" ==================
+"==================================================
 
 " prepend // at line head
 nnoremap <leader>/ I//<ESC> 
