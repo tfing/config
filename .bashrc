@@ -115,12 +115,15 @@ alias rm='rm -Iv'	# -I ask once for removing multiple files
 # recursive search(-r), show line number(-n)
 # ignore binary(-I), ignore case(-i)
 # show differences in colour (--color)
-GREP_OPTIONS="-rnI --exclude-dir={prebuilt,.git} --exclude={tags,*.d,*.o,*.a} --color"
+GREP_OPTIONS="-rnI --exclude-dir={prebuilt,.git} --exclude={tags,*.d,*.o,*.a,*.map} --color"
 alias grep="grep $GREP_OPTIONS"         
 alias gR='grep'
 alias gr='gR -i' #ignore case(-i) 
 alias fgR="fgrep $GREP_OPTIONS" # search fixed string for speed
 alias fgr='fgR -i' #ignore case(-i)
+
+# "xxx={a,b,c}" is called "shell brace expansion"
+alias ctags="ctags --exclude={*.o,*.d,*.a,*.map}"
 
 # Some shortcuts for different directory listings
 alias ls='ls -hF --color=tty'                   # classify files in colour
@@ -140,6 +143,7 @@ alias     ...='cd ../..'
 alias    ....='cd ../../..'
 alias   .....='cd ../../../..'
 alias  ......='cd ../../../../..'
+alias      .2='cd ../..'
 alias      .3='cd ../../..'
 alias      .4='cd ../../../..'
 alias      .5='cd ../../../../..'

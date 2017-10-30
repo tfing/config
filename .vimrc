@@ -37,7 +37,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 autocmd FileType c,cpp autocmd BufWritePre <buffer> %s/\s\+$//e
 
 let g:autotagTagsFile="tags"
-let g:autotagExcludeSuffixes "tml.xml.o.a.d.xlsx"
+let g:autotagExcludeSuffixes="tml.xml.o.a.d.xlsx"
 
 "==================================================
 " VIM configurations
