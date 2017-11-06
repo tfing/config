@@ -116,8 +116,8 @@ alias rm='rm -Iv'	# -I ask once for removing multiple files
 # ignore binary(-I), ignore case(-i)
 # show differences in colour (--color)
 GREP_OPTIONS="-rnI --exclude-dir={prebuilt,.git} --exclude={tags,*.d,*.o,*.a,*.map} --color"
-alias grep="grep $GREP_OPTIONS"         
-alias gR='grep'
+alias grep="grep --color"
+alias gR='grep $GREP_OPTIONS'
 alias gr='gR -i' #ignore case(-i) 
 alias fgR="fgrep $GREP_OPTIONS" # search fixed string for speed
 alias fgr='fgR -i' #ignore case(-i)
