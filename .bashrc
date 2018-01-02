@@ -13,6 +13,9 @@
 # a patch to the cygwin mailing list.
 
 # User dependent .bashrc file
+if [ -e /usr/share/autojump/autojump.sh ]; then
+    . /usr/share/autojump/autojump.sh
+fi
 
 # Environment Variables
 # #####################
