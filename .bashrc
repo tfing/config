@@ -13,6 +13,9 @@
 # a patch to the cygwin mailing list.
 
 # User dependent .bashrc file
+if [ -e ~/.autojump/share/autojump/autojump.bash ]; then
+    . ~/.autojump/share/autojump/autojump.bash
+fi
 
 # Environment Variables
 # #####################
@@ -183,3 +186,7 @@ export PATH=$NSIM/bin:$PATH
 
 LM_LICENSE_FILE=27000@mtklc12
 export LM_LICENSE_FILE
+
+export P4USER=tinghan.shen
+export P4PORT=mtkspf24:3007
+export PATH=~/tool/git-master/bin:$PATH
