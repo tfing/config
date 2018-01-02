@@ -17,6 +17,10 @@ if [ -e ~/.autojump/share/autojump/autojump.bash ]; then
     . ~/.autojump/share/autojump/autojump.bash
 fi
 
+if [ -e /usr/share/autojump/autojump.sh ]; then
+    . /usr/share/autojump/autojump.sh
+fi
+
 # Environment Variables
 # #####################
 
