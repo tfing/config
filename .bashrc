@@ -173,12 +173,12 @@ export TERM="xterm-256color"
 
 function git_branch {
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return;
-    echo "("${ref#refs/heads/}")";
+    echo "("${ref#refs/heads/}") ";
 }
 
 # display current directory(\w) and git branch
 # "\[\e[1;32m\]" and "\[\e[0m\]" are colors
-PS1='\[\e[1;32m\]\w\[\e[0m\] \[\e[1;35m\]$(git_branch)\[\e[0m\]\$ '
+PS1='\[\e[1;32m\]\w\[\e[0m\] \[\e[1;34m\](\t)\[\e[0m\]\n\[\e[1;35m\]$(git_branch)\[\e[0m\]\$ '
 
 export GOPATH=$HOME/gopath
 export PATH=$GOPATH:$GOPATH/bin:$PATH
