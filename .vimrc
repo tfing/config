@@ -7,7 +7,7 @@ filetype off
 
 set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 "Plugin 'SirVer/ultisnips'
 "Plugin 'honza/vim-snippets'
 Plugin 'steffanc/cscopemaps.vim'
