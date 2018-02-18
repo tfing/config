@@ -156,6 +156,9 @@ inoremap <C-s> <ESC>:w<CR>
 " Use a new keymapping to trigger <C-]>
 nnoremap <C-j> <C-]>
 
+" Enter : insert new line after w/o insert mode  
+nnoremap <F12> o<Esc>k
+
 "==================================================
 " from vim wiki 'Quick command in insert mode'
 "==================================================
