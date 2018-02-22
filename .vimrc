@@ -46,7 +46,7 @@ let g:autotagExcludeSuffixes="tml.xml.o.a.d.xlsx"
 " Theme
 color desert
 
-let mapleader = "-"
+let mapleader = " "
 let maplocalleader = "\\"
 
 " Use system clipboard to do copy/paste
@@ -139,7 +139,7 @@ nnoremap <leader>"  viw<esc>a"<esc>hbi"<esc>lel
 
 " F5 : open NERD Tree
 nnoremap <silent> <F5>  :NERDTreeToggle<CR>
-" F9 : highlight toggle
+" F8 : highlight toggle
 nnoremap <F8> :set hlsearch!<CR>
 " <C-h> : left tab
 nnoremap <C-l> :tabn<CR>
@@ -156,8 +156,8 @@ inoremap <C-s> <ESC>:w<CR>
 " Use a new keymapping to trigger <C-]>
 nnoremap <C-j> <C-]>
 
-" Enter : insert new line after w/o insert mode  
-nnoremap <F12> o<Esc>k
+" Enter : insert new line after current line
+nnoremap <Enter> o<Esc>
 
 "==================================================
 " from vim wiki 'Quick command in insert mode'
