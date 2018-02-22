@@ -17,6 +17,7 @@
 	lg = log --graph --stat
 	mf = merge --no-ff
 	rb = rebase
+    ri = rebase --interactive
 	pick = cherry-pick
 	pickc = cherry-pick --continue
 	picka = cherry-pick --abort
