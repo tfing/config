@@ -8,8 +8,8 @@ filetype off
 set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-"Plugin 'SirVer/ultisnips'
-"Plugin 'honza/vim-snippets'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 Plugin 'steffanc/cscopemaps.vim'
 "Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'The-NERD-tree'
@@ -38,6 +38,11 @@ autocmd FileType c,cpp autocmd BufWritePre <buffer> %s/\s\+$//e
 
 let g:autotagTagsFile="tags"
 let g:autotagExcludeSuffixes="tml.xml.o.a.d.xlsx"
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "==================================================
 " VIM configurations
