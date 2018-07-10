@@ -59,8 +59,18 @@ let maplocalleader = "\\"
 " Or, copy sth outside vim and 'p' in vim
 set clipboard=unnamedplus
 
-" Replace tab with 4 spaces
-set tabstop=4 shiftwidth=4 expandtab
+" Replace tab with 4 spaces as default
+" <F9> to change tab action
+" from http://vim.wikia.com/wiki/Toggle_between_tabs_and_spaces
+set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+function! TabToggle()
+	if &expandtab
+		set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
+	else
+		set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+	endif
+endfunction
+nnoremap <F9> mz:execute TabToggle()<CR>'z
 
 " Show line number
 set number numberwidth=4
@@ -98,6 +108,10 @@ if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
 endif
+
+" Highlight line 80 to check coding rule 
+highlight ColorColumn ctermbg=darkblue
+set colorcolumn=80
 
 "==================================================
 " Status line
@@ -157,12 +171,23 @@ nnoremap <C-n> :tabnew<CR>
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <ESC>:w<CR>
 
+" jump between windows
+nnoremap <leader>w <C-w>w
+inoremap <leader>w <ESC><C-w>w
+
+" don't want to press <CR>
+nnoremap <leader>q :q<CR>
+
 " my <C-]> jump doesn't work on lubuntu 16.04.1 + vim 7.4 + ctags
 " Use a new keymapping to trigger <C-]>
 nnoremap <C-j> <C-]>
 
 " Enter : insert new line after current line
 nnoremap <Enter> o<Esc>
+
+" mimic Ctrl-C and Ctrl-v on windows
+vnoremap <leader>c :w! ~/.vimcp<CR>
+nnoremap <leader>v :r ~/.vimcp<CR>
 
 "==================================================
 " from vim wiki 'Quick command in insert mode'
