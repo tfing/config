@@ -125,7 +125,7 @@ set ignorecase
 " if pattern contains capital letter, do case-sensitive search
 set smartcase
 
-" search '.tag' file in current working path, vim opening path, or upto parent 
+" search '.tag' file in current working path, vim opening path, or upto parent
 " folders
 set tags=./.tags;,.tags
 
@@ -188,9 +188,11 @@ nnoremap <silent> <F5>  :NERDTreeToggle<CR>
 " F8 : highlight toggle
 nnoremap <F8> :set hlsearch!<CR>
 " <C-h> : left tab
-nnoremap <C-l> :tabn<CR>
+" nnoremap <C-l> :tabn<CR>
+nnoremap <Tab>k :tabn<CR>
 " <C-l> : right tab
-nnoremap <C-h> :tabp<CR>
+" nnoremap <C-h> :tabp<CR>
+nnoremap <Tab>j :tabp<CR>
 " <C-n> : new tab. This usage rate is low. Comment it out.
 " nnoremap <C-n> :tabnew<CR>
 
@@ -199,9 +201,17 @@ nnoremap <C-h> :tabp<CR>
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <ESC>:w<CR>
 
-" jump to next right-down window
-nnoremap <C-n> :wincmd w<CR>
+" ------------
+" vim window
+" ------------
+" jump to next right-down
+nnoremap <leader>j :wincmd W<CR>
+nnoremap <leader>k :wincmd w<CR>
+" jump between
 nnoremap <C-p> :wincmd p<CR>
+" create new window and edit in it
+nnoremap <C-w>\ :vs<CR>:wincmd w<CR> 
+nnoremap <C-w>- :sp<CR>:wincmd w<CR>
 
 " don't want to press <CR>
 nnoremap <leader>q :q<CR>
@@ -216,6 +226,10 @@ nnoremap <Enter> o<Esc>
 " mimic Ctrl-C and Ctrl-v on windows
 vnoremap <leader>c :w! ~/.vimcp<CR>
 nnoremap <leader>v :r ~/.vimcp<CR>
+
+" replace word, only complete word, under cursor
+" add options, 'c' confirm, 'g' greedy, 'I' case-sensitive, after 2nd /
+nnoremap <leader>s :%s/\<<C-r><C-w>\>//cg<Left><Left><Left>
 
 "==================================================
 " from vim wiki 'Quick command in insert mode'
