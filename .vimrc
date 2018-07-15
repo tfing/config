@@ -51,7 +51,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " Theme
 color desert
 
-let mapleader = " "
+let mapleader = ";"
 let maplocalleader = "\\"
 
 " Use system clipboard to do copy/paste
@@ -164,16 +164,17 @@ nnoremap <F8> :set hlsearch!<CR>
 nnoremap <C-l> :tabn<CR>
 " <C-l> : right tab
 nnoremap <C-h> :tabp<CR>
-" <C-n> : new tab
-nnoremap <C-n> :tabnew<CR>
+" <C-n> : new tab. This usage rate is low. Comment it out.
+" nnoremap <C-n> :tabnew<CR>
+
 " <C-s>  : save file in normal/insert mode. Note: add 'stty -ixon' in .bashrc
 " or .bash_profile to prevent hanged scroll
 nnoremap <C-s> :w<CR>
 inoremap <C-s> <ESC>:w<CR>
 
-" jump between windows
-nnoremap <leader>w <C-w>w
-inoremap <leader>w <ESC><C-w>w
+" jump to next right-down window
+nnoremap <C-n> :wincmd w<CR>
+nnoremap <C-p> :wincmd p<CR>
 
 " don't want to press <CR>
 nnoremap <leader>q :q<CR>
