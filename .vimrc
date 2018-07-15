@@ -14,7 +14,8 @@ Plugin 'steffanc/cscopemaps.vim'
 "Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'The-NERD-tree'
 Plugin 'scrooloose/nerdcommenter' "comment: <leader>cc, uncomment: <leader>cu
-Plugin 'craigemery/vim-autotag'
+"Plugin 'craigemery/vim-autotag'
+Plugin 'vim-gutentags', {'vim-gutentags': 'vim-gutentags'} "Replace vim-autotag
 call vundle#end()
 
 filetype plugin indent on
@@ -33,12 +34,37 @@ filetype plugin indent on
 
 " Close VIM if the only left open window is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary" ) | q | endif
-" Delete trailing whitespace on c,cpp file type
-autocmd FileType c,cpp autocmd BufWritePre <buffer> %s/\s\+$//e
+" Delete trailing whitespace on these file types
+autocmd FileType h,c,cpp autocmd BufWritePre <buffer> %s/\s\+$//e
 
-let g:autotagTagsFile="tags"
-let g:autotagExcludeSuffixes="tml.xml.o.a.d.xlsx"
+"-------------
+" vim-autotag
+"-------------
+"let g:autotagTagsFile="tags"
+"let g:autotagExcludeSuffixes="tml.xml.o.a.d.xlsx"
 
+"-------------
+" vim-gutentags
+"-------------
+" Referenced from http://www.skywind.me/blog/archives/2084
+" gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+ 
+" 所生成的数据文件的名称
+let g:gutentags_ctags_tagfile = '.tags'
+ 
+" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+ 
+" 配置 ctags 的参数
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
+
+"-------------
+" vim-snippets
+"-------------
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -99,8 +125,9 @@ set ignorecase
 " if pattern contains capital letter, do case-sensitive search
 set smartcase
 
-" search tag files in current or upto parent folders
-set tags=./tags,tags;
+" search '.tag' file in current working path, vim opening path, or upto parent 
+" folders
+set tags=./.tags;,.tags
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
