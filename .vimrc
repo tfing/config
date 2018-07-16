@@ -48,7 +48,9 @@ autocmd FileType h,c,cpp autocmd BufWritePre <buffer> %s/\s\+$//e
 "-------------
 " Referenced from http://www.skywind.me/blog/archives/2084
 " gutentags 搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
-let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+" Remove '.git' for projects consisted by multiple repos
+let g:gutentags_project_root = ['.root', '.svn', '.hg', '.project']
+let g:gutentags_add_default_project_roots = 0
  
 " 所生成的数据文件的名称
 let g:gutentags_ctags_tagfile = '.tags'
