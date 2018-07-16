@@ -150,8 +150,9 @@ set statusline+=%2*\ %<%F\                                "File+path
 set statusline+=%3*\ %=\ %{''.(&fenc!=''?&fenc:&enc).''}\ "Encoding
 set statusline+=%4*\ %{(&bomb?\",BOM\":\"\")}\            "Encoding2
 set statusline+=%5*\ %{&ff}\                              "FileFormat (dos/unix..)
-set statusline+=%6*\ row:%l/%L\ col:%03c\ (%03p%%)\             "Rownumber/total (%)
+set statusline+=%6*\ row:%l/%L\ col:%03c\ (%03p%%)\       "Rownumber/total (%)
 set statusline+=%0*\ \ %m%r%w\ %P\ \                      "Modified? Readonly? Top/bot.
+"set statusline+=%{gutentags#statusline()} "Progress of updating ctags 
 hi User2 ctermfg=3  ctermbg=0
 hi User6 ctermfg=3  ctermbg=4
 set laststatus=2
@@ -187,26 +188,26 @@ nnoremap <leader>"  viw<esc>a"<esc>hbi"<esc>lel
 nnoremap <silent> <F5>  :NERDTreeToggle<CR>
 " F8 : highlight toggle
 nnoremap <F8> :set hlsearch!<CR>
-" <C-h> : left tab
+
+" ------------
+" vim tab
+" ------------
 " nnoremap <C-l> :tabn<CR>
-nnoremap <Tab>k :tabn<CR>
-" <C-l> : right tab
 " nnoremap <C-h> :tabp<CR>
-nnoremap <Tab>j :tabp<CR>
+nnoremap <Tab>l :tabn<CR>
+nnoremap <Tab>h :tabp<CR>
 " <C-n> : new tab. This usage rate is low. Comment it out.
 " nnoremap <C-n> :tabnew<CR>
 
-" <C-s>  : save file in normal/insert mode. Note: add 'stty -ixon' in .bashrc
-" or .bash_profile to prevent hanged scroll
-nnoremap <C-s> :w<CR>
-inoremap <C-s> <ESC>:w<CR>
 
 " ------------
 " vim window
 " ------------
 " jump to next right-down
-nnoremap <leader>j :wincmd W<CR>
-nnoremap <leader>k :wincmd w<CR>
+nnoremap <C-j> :wincmd j<CR>
+nnoremap <C-k> :wincmd k<CR>
+nnoremap <C-h> :wincmd h<CR>
+nnoremap <C-l> :wincmd l<CR>
 " jump between
 nnoremap <C-p> :wincmd p<CR>
 " create new window and edit in it
@@ -216,12 +217,24 @@ nnoremap <C-w>- :sp<CR>:wincmd w<CR>
 " don't want to press <CR>
 nnoremap <leader>q :q<CR>
 
+" ------------
+" ctags
+" ------------
 " my <C-]> jump doesn't work on lubuntu 16.04.1 + vim 7.4 + ctags
 " Use a new keymapping to trigger <C-]>
-nnoremap <C-j> <C-]>
+" nnoremap <C-j> <C-]>
+nnoremap <leader>] <C-]>
 
+" ------------
+" others
+" ------------
 " Enter : insert new line after current line
 nnoremap <Enter> o<Esc>
+
+" <C-s>  : save file in normal/insert mode. Note: add 'stty -ixon' in .bashrc
+" or .bash_profile to prevent hanged scroll
+nnoremap <C-s> :w<CR>
+inoremap <C-s> <ESC>:w<CR>
 
 " mimic Ctrl-C and Ctrl-v on windows
 vnoremap <leader>c :w! ~/.vimcp<CR>
