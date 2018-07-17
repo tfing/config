@@ -235,11 +235,11 @@ nnoremap <leader>q :q<CR>
 " ------------
 " ctags
 " ------------
-" my <C-]> jump doesn't work on lubuntu 16.04.1 + vim 7.4 + ctags
-" Use a new keymapping to trigger <C-]>
-" nnoremap <C-j> <C-]>
-nnoremap <leader>] <C-]>
-nnoremap <leader>i <C-W><C-]>
+" preview tag
+nnoremap <leader>c :pc<CR>
+nnoremap <leader>i :ptag <C-r><C-w><CR>
+nnoremap <leader>j :ptnext<CR>
+nnoremap <leader>k :ptp<CR>
 
 " ------------
 " others
