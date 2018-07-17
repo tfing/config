@@ -72,6 +72,11 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
+"-------------
+" NERDTree 
+"-------------
+let NERDTreeShowBookmarks=1
+
 "==================================================
 " VIM configurations
 "==================================================
@@ -226,6 +231,7 @@ nnoremap <leader>q :q<CR>
 " Use a new keymapping to trigger <C-]>
 " nnoremap <C-j> <C-]>
 nnoremap <leader>] <C-]>
+nnoremap <leader>i <C-W><C-]>
 
 " ------------
 " others
