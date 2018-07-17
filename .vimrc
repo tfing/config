@@ -34,8 +34,16 @@ filetype plugin indent on
 
 " Close VIM if the only left open window is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary" ) | q | endif
-" Delete trailing whitespace on these file types
-autocmd FileType h,c,cpp autocmd BufWritePre <buffer> %s/\s\+$//e
+" Delete trailing whitespace on these file types,and restore cursor when done
+" https://stackoverflow.com/questions/35390415/cursor-jump-in-vim-after-save
+function! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+autocmd FileType h,c,cpp autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+"autocmd FileType h,c,cpp autocmd BufWritePre <buffer> %s/\s\+$//e
 
 "-------------
 " vim-autotag
