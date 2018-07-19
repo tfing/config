@@ -143,6 +143,7 @@ alias lt='ll -t'                                 # show by time, newest at top
 alias my='sh mybuild.sh'
 alias g='git'
 complete -o default -o nospace -F _git g
+alias gti='git'
 # alias up='sh upload.sh'
 
 alias      .~='cd ~'
@@ -179,6 +180,8 @@ function git_branch {
 # display current directory(\w) and git branch
 # "\[\e[1;32m\]" and "\[\e[0m\]" are colors
 PS1='\[\e[1;32m\]\w\[\e[0m\] \[\e[1;34m\](\t)\[\e[0m\]\n\[\e[1;35m\]$(git_branch)\[\e[0m\]\$ '
+
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 export GOPATH=$HOME/gopath
 export PATH=$GOPATH:$GOPATH/bin:$PATH
