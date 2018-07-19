@@ -1,5 +1,5 @@
 "==================================================
-" Vundle 
+" Vundle
 "==================================================
 
 set nocompatible
@@ -16,6 +16,7 @@ Plugin 'The-NERD-tree'
 Plugin 'scrooloose/nerdcommenter' "comment: <leader>cc, uncomment: <leader>cu
 "Plugin 'craigemery/vim-autotag'
 Plugin 'vim-gutentags', {'vim-gutentags': 'vim-gutentags'} "Replace vim-autotag
+Plugin 'skywind3000/vim-preview'
 call vundle#end()
 
 filetype plugin indent on
@@ -59,14 +60,14 @@ autocmd FileType h,c,cpp autocmd BufWritePre * :call <SID>StripTrailingWhitespac
 " Remove '.git' for projects consisted by multiple repos
 let g:gutentags_project_root = ['.root', '.svn', '.hg', '.project']
 let g:gutentags_add_default_project_roots = 0
- 
+
 " 所生成的数据文件的名称
 let g:gutentags_ctags_tagfile = '.tags'
- 
+
 " 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录
 let s:vim_tags = expand('~/.cache/tags')
 let g:gutentags_cache_dir = s:vim_tags
- 
+
 " 配置 ctags 的参数
 let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
 let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
@@ -81,9 +82,15 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 "-------------
-" NERDTree 
+" NERDTree
 "-------------
-let NERDTreeShowBookmarks=1
+let NERDTreeShowBookmarks = 1
+
+"-------------
+" NERDCommenter
+"-------------
+let NERDCommentEmptyLines = 1
+let NERDSpaceDelims = 1
 
 "==================================================
 " VIM configurations
@@ -116,7 +123,7 @@ nnoremap <F9> mz:execute TabToggle()<CR>'z
 " Show line number
 set number numberwidth=4
 
-" Enable mouse 
+" Enable mouse
 set mouse=a
 
 " significant cursor line
@@ -130,7 +137,7 @@ set hlsearch
 set scrolloff=3
 
 " display incomplete commands
-set showcmd		
+set showcmd
 
 " use 256 color mode
 set t_Co=256
@@ -151,9 +158,12 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
-" Highlight line 80 to check coding rule 
+" Highlight line 80 to check coding rule
 highlight ColorColumn ctermbg=darkblue
 set colorcolumn=80
+
+set splitright
+set splitbelow
 
 "==================================================
 " Status line
@@ -167,13 +177,13 @@ set statusline+=%4*\ %{(&bomb?\",BOM\":\"\")}\            "Encoding2
 set statusline+=%5*\ %{&ff}\                              "FileFormat (dos/unix..)
 set statusline+=%6*\ row:%l/%L\ col:%03c\ (%03p%%)\       "Rownumber/total (%)
 set statusline+=%0*\ \ %m%r%w\ %P\ \                      "Modified? Readonly? Top/bot.
-"set statusline+=%{gutentags#statusline()} "Progress of updating ctags 
+"set statusline+=%{gutentags#statusline()} "Progress of updating ctags
 hi User2 ctermfg=3  ctermbg=0
 hi User6 ctermfg=3  ctermbg=4
 set laststatus=2
 
 "==================================================
-" Key mappings 
+" Key mappings
 "==================================================
 
 " edit .vimrc
@@ -211,6 +221,7 @@ nnoremap <F8> :set hlsearch!<CR>
 " nnoremap <C-h> :tabp<CR>
 nnoremap <Tab>l :tabn<CR>
 nnoremap <Tab>h :tabp<CR>
+nnoremap tt :tabn<CR>
 " <C-n> : new tab. This usage rate is low. Comment it out.
 " nnoremap <C-n> :tabnew<CR>
 
@@ -218,32 +229,44 @@ nnoremap <Tab>h :tabp<CR>
 " ------------
 " vim window
 " ------------
-" jump to next right-down
-nnoremap <C-j> :wincmd j<CR>
-nnoremap <C-k> :wincmd k<CR>
-nnoremap <C-h> :wincmd h<CR>
-nnoremap <C-l> :wincmd l<CR>
+" jump to next right-down/top-left and round back
+nnoremap <C-j> :wincmd w<CR>
+nnoremap <C-k> :wincmd W<CR>
+nnoremap <C-h> :wincmd W<CR>
+nnoremap <C-l> :wincmd w<CR>
 " jump between
 nnoremap <C-p> :wincmd p<CR>
 " create new window and edit in it
-nnoremap <C-w>\ :vs<CR>:wincmd w<CR> 
+nnoremap <C-w>\ :vs<CR>:wincmd w<CR>
 nnoremap <C-w>- :sp<CR>:wincmd w<CR>
 
-" don't want to press <CR>
-nnoremap <leader>q :q<CR>
 
 " ------------
 " ctags
 " ------------
 " preview tag
-nnoremap <leader>c :pc<CR>
-nnoremap <leader>i :ptag <C-r><C-w><CR>
-nnoremap <leader>j :ptnext<CR>
-nnoremap <leader>k :ptp<CR>
+" nnoremap <leader>ic :pc<cr>
+" nnoremap <leader>ii :ptag <c-r><c-w><cr>
+" nnoremap <leader>ij :ptnext<cr>
+" nnoremap <leader>ik :ptp<cr>
+nnoremap <leader>iq :PreviewClose<cr>
+nnoremap <space> :PreviewTag<cr>
+nnoremap <leader>ii :PreviewGoto edit<cr>
+nnoremap <leader>it :PreviewGoto tabe<cr>
+nnoremap <leader>if :PreviewSignature!<cr>
+nnoremap <leader>k :PreviewScroll -1<cr>
+nnoremap <leader>j :PreviewScroll +1<cr>
+nnoremap <leader>if <c-\><c-o>:PreviewSignature!<cr>
+" inoremap <leader>k <c-\><c-o>:PreviewScroll -1<cr>
+" inoremap <leader>j <c-\><c-o>:PreviewScroll +1<cr>
 
 " ------------
 " others
 " ------------
+
+" don't want to press <CR>
+nnoremap <leader>q :q<CR>
+
 " Enter : insert new line after current line
 nnoremap <Enter> o<Esc>
 
@@ -256,7 +279,7 @@ inoremap <C-s> <ESC>:w<CR>
 vnoremap <leader>c :w! ~/.vimcp<CR>
 nnoremap <leader>v :r ~/.vimcp<CR>
 
-" replace word, only complete word, under cursor
+" replace complete word under cursor
 " add options, 'c' confirm, 'g' greedy, 'I' case-sensitive, after 2nd /
 nnoremap <leader>s :%s/\<<C-r><C-w>\>//cg<Left><Left><Left>
 
@@ -283,25 +306,31 @@ inoremap WQ <ESC>:wq<CR>
 
 
 "==================================================
-" Abbreviations 
+" Abbreviations
 "==================================================
 
+" Type
+iabbrev u32 uint32_t
+iabbrev i32 int32_t
+iabbrev u8 uint8_t
+iabbrev i8 int8_t
+
 " insert mode
-iabbrev @@ tf1515@gmail.com 
+iabbrev @@ tf1515@gmail.com
 iabbrev ssig <cr>TingHan<cr>tf1515@gmail.com
 
-" command mode 
+" command mode
 " expand 'tn' to 'tabnew' automatically when typing command
 cabbrev tn tabnew
 
 "==================================================
-" Programming related 
+" Programming related
 "==================================================
 
 " prepend // at line head
-nnoremap <leader>/ I//<ESC> 
+nnoremap <leader>/ I//<ESC>
 
-" remove first found '//' 
+" remove first found '//'
 nnoremap <leader>d/ :s:\(\s\=\)\/\/:\1:<ESC>
 
 " surround line with /* */
