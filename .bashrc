@@ -186,15 +186,14 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 export GOPATH=$HOME/gopath
 export PATH=$GOPATH:$GOPATH/bin:$PATH
 
+# VMWare toolchain
 ARCGNU=$HOME/arc_gnu
 export PATH=$ARCGNU/bin:$ARCGNU/eclipse:$PATH
-
 NSIM=$HOME/test/MetaWare_Linux/nSIM/nSIM
 export PATH=$NSIM/bin:$PATH
 
-LM_LICENSE_FILE=27000@mtklc12
-export LM_LICENSE_FILE
+if [ -f /proj/mtk15399/.bashrc_15399 ]; then
+    source /proj/mtk15399/.bashrc_15399
+fi
 
-export P4USER=tinghan.shen
-export P4PORT=mtkspf24:3007
-export PATH=~/tool/git-master/bin:$PATH
+
