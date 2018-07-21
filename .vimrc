@@ -1,24 +1,21 @@
 "==================================================
-" Vundle
+" Plugins
 "==================================================
 
 set nocompatible
 filetype off
 
-" set runtimepath+=~/.vim/bundle/Vundle.vim
-" call vundle#begin()
 call plug#begin('~/.vim/bundle')
-" Plug 'VundleVim/Vundle.vim'
+Plug 'junegunn/vim-plug'
 Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 Plug 'steffanc/cscopemaps.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter' "comment: <leader>cc, uncomment: <leader>cu
 Plug 'ludovicchabant/vim-gutentags' "Replace vim-autotag
-
 Plug 'skywind3000/vim-preview'
-Plug 'Valloric/YouCompleteMe'
-" call vundle#end()
+Plug 'farmergreg/vim-lastplace'
+" Plug 'Valloric/YouCompleteMe'
+" Plug 'honza/vim-snippets'
 call plug#end()
 
 filetype plugin indent on
@@ -227,8 +224,8 @@ nnoremap <F8> :set hlsearch!<CR>
 " ------------
 " nnoremap <C-l> :tabn<CR>
 " nnoremap <C-h> :tabp<CR>
-nnoremap <Tab>l :tabn<CR>
-nnoremap <Tab>h :tabp<CR>
+" nnoremap <Tab>l :tabn<CR>
+" nnoremap <Tab>h :tabp<CR>
 nnoremap tg :tabp<CR>
 " <C-n> : new tab. This usage rate is low. Comment it out.
 " nnoremap <C-n> :tabnew<CR>
@@ -269,13 +266,31 @@ nnoremap <leader>f <c-\><c-o>:PreviewSignature!<cr>
 " inoremap <leader>j <c-\><c-o>:PreviewScroll +1<cr>
 
 " ------------
+" UltiSnips
+" ------------
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+" Other key bindings are not work, e.g. c-f, c-d, c-r, c-g
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" Creating/Editing path for private snips
+let g:UltiSnipsSnippetsDir=$HOME.'/config/mysnips'
+" Searching path of snips
+let g:UltiSnipsSnippetDirectories=['UltiSnips', $HOME.'/config/mysnips']
+" Edit snips in split window
+let g:UltiSnipsEditSplit="vertical"
+
+" Edit snips
+nnoremap <leader>es :UltiSnipsEdit<cr>
+
+" ------------
 " others
 " ------------
-
 " don't want to press <CR>
 nnoremap <leader>q :q<CR>
 
-" quick save and leave and save a <cr> 
+" quick save and leave and save a <cr>
 nnoremap <leader>w :w<CR>
 
 " Enter : insert new line after current line
