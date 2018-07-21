@@ -5,19 +5,21 @@
 set nocompatible
 filetype off
 
-set runtimepath+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'steffanc/cscopemaps.vim'
-"Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'The-NERD-tree'
-Plugin 'scrooloose/nerdcommenter' "comment: <leader>cc, uncomment: <leader>cu
-"Plugin 'craigemery/vim-autotag'
-Plugin 'vim-gutentags', {'vim-gutentags': 'vim-gutentags'} "Replace vim-autotag
-Plugin 'skywind3000/vim-preview'
-call vundle#end()
+" set runtimepath+=~/.vim/bundle/Vundle.vim
+" call vundle#begin()
+call plug#begin('~/.vim/bundle')
+" Plug 'VundleVim/Vundle.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'steffanc/cscopemaps.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter' "comment: <leader>cc, uncomment: <leader>cu
+Plug 'ludovicchabant/vim-gutentags' "Replace vim-autotag
+
+Plug 'skywind3000/vim-preview'
+Plug 'Valloric/YouCompleteMe'
+" call vundle#end()
+call plug#end()
 
 filetype plugin indent on
 " Brief help
@@ -35,6 +37,7 @@ filetype plugin indent on
 
 " Close VIM if the only left open window is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary" ) | q | endif
+
 " Delete trailing whitespace on these file types,and restore cursor when done
 " https://stackoverflow.com/questions/35390415/cursor-jump-in-vim-after-save
 function! <SID>StripTrailingWhitespaces()
@@ -44,7 +47,6 @@ function! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 autocmd FileType h,c,cpp autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
-"autocmd FileType h,c,cpp autocmd BufWritePre <buffer> %s/\s\+$//e
 
 "-------------
 " vim-autotag
@@ -91,6 +93,12 @@ let NERDTreeShowBookmarks = 1
 "-------------
 let NERDCommentEmptyLines = 1
 let NERDSpaceDelims = 1
+
+"-------------
+" YouCompleteMe
+"-------------
+let g:ycm_server_python_interpreter='/usr/bin/python2.7'
+let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
 
 "==================================================
 " VIM configurations
@@ -268,7 +276,7 @@ nnoremap <leader>f <c-\><c-o>:PreviewSignature!<cr>
 nnoremap <leader>q :q<CR>
 
 " quick save and leave and save a <cr> 
-nnoremap <leader>w :wq<CR>
+nnoremap <leader>w :w<CR>
 
 " Enter : insert new line after current line
 nnoremap <Enter> o<Esc>
