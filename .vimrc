@@ -221,7 +221,7 @@ nnoremap <F8> :set hlsearch!<CR>
 " nnoremap <C-h> :tabp<CR>
 nnoremap <Tab>l :tabn<CR>
 nnoremap <Tab>h :tabp<CR>
-nnoremap tt :tabn<CR>
+nnoremap tg :tabp<CR>
 " <C-n> : new tab. This usage rate is low. Comment it out.
 " nnoremap <C-n> :tabnew<CR>
 
@@ -249,14 +249,14 @@ nnoremap <C-w>- :sp<CR>:wincmd w<CR>
 " nnoremap <leader>ii :ptag <c-r><c-w><cr>
 " nnoremap <leader>ij :ptnext<cr>
 " nnoremap <leader>ik :ptp<cr>
-nnoremap <leader>iq :PreviewClose<cr>
+nnoremap <leader>o :PreviewClose<cr>
 nnoremap <space> :PreviewTag<cr>
-nnoremap <leader>ii :PreviewGoto edit<cr>
-nnoremap <leader>it :PreviewGoto tabe<cr>
-nnoremap <leader>if :PreviewSignature!<cr>
+nnoremap <leader>i :PreviewGoto edit<cr>
+nnoremap <leader>t :PreviewGoto tabe<cr>
+nnoremap <leader>f :PreviewSignature!<cr>
 nnoremap <leader>k :PreviewScroll -1<cr>
 nnoremap <leader>j :PreviewScroll +1<cr>
-nnoremap <leader>if <c-\><c-o>:PreviewSignature!<cr>
+nnoremap <leader>f <c-\><c-o>:PreviewSignature!<cr>
 " inoremap <leader>k <c-\><c-o>:PreviewScroll -1<cr>
 " inoremap <leader>j <c-\><c-o>:PreviewScroll +1<cr>
 
@@ -266,6 +266,9 @@ nnoremap <leader>if <c-\><c-o>:PreviewSignature!<cr>
 
 " don't want to press <CR>
 nnoremap <leader>q :q<CR>
+
+" quick save and leave and save a <cr> 
+nnoremap <leader>w :wq<CR>
 
 " Enter : insert new line after current line
 nnoremap <Enter> o<Esc>
