@@ -14,6 +14,8 @@ Plug 'scrooloose/nerdcommenter' "comment: <leader>cc, uncomment: <leader>cu
 Plug 'ludovicchabant/vim-gutentags' "Replace vim-autotag
 Plug 'skywind3000/vim-preview'
 Plug 'farmergreg/vim-lastplace'
+Plug 'vim-scripts/taglist.vim'
+Plug 'vim-scripts/winmanager'
 " Plug 'Valloric/YouCompleteMe'
 " Plug 'honza/vim-snippets'
 call plug#end()
@@ -31,25 +33,6 @@ filetype plugin indent on
 "==================================================
 " Plugin configurations
 "==================================================
-
-" Close VIM if the only left open window is NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary" ) | q | endif
-
-" Delete trailing whitespace on these file types,and restore cursor when done
-" https://stackoverflow.com/questions/35390415/cursor-jump-in-vim-after-save
-function! <SID>StripTrailingWhitespaces()
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    call cursor(l, c)
-endfun
-autocmd FileType h,c,cpp autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
-
-"-------------
-" vim-autotag
-"-------------
-"let g:autotagTagsFile="tags"
-"let g:autotagExcludeSuffixes="tml.xml.o.a.d.xlsx"
 
 "-------------
 " vim-gutentags
@@ -72,18 +55,38 @@ let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
 let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
 let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
-"-------------
-" vim-snippets
-"-------------
+" ------------
+" UltiSnips
+" ------------
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
+
+" Other key bindings are not work, e.g. c-f, c-d, c-r, c-g
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" Creating/Editing path for private snips
+let g:UltiSnipsSnippetsDir=$HOME.'/config/mysnips'
+
+" Searching path of snips
+let g:UltiSnipsSnippetDirectories=['UltiSnips', $HOME.'/config/mysnips']
+
+" Edit snips in split window
+let g:UltiSnipsEditSplit="vertical"
+
+" Edit snips
+nnoremap <silent> <leader>es :UltiSnipsEdit<cr>
 
 "-------------
 " NERDTree
 "-------------
 let NERDTreeShowBookmarks = 1
+
+" Close VIM if the only left open window is NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary" ) | q | endif
+
+" F5 : open NERD Tree
+" nnoremap <silent> <F5>  :NERDTreeToggle<CR>
 
 "-------------
 " NERDCommenter
@@ -96,6 +99,32 @@ let NERDSpaceDelims = 1
 "-------------
 let g:ycm_server_python_interpreter='/usr/bin/python2.7'
 let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
+
+"-------------
+" Taglist
+"-------------
+" nnoremap <silent> <F6> :TlistToggle<CR>
+let Tlist_Exit_OnlyWindow = 1
+let Tlist_Use_Right_Window = 1
+
+"-------------
+" winmanager
+"-------------
+" Toggle winmanager
+nnoremap <silent> <F4> :WMToggle<cr>
+
+" Add NERDTree
+let g:NERDTree_title='NERD Tree'
+let g:winManagerWindowLayout='NERDTree|TagList'
+
+function! NERDTree_Start()
+    exec 'NERDTree'
+endfunction
+
+function! NERDTree_IsValid()
+    return 1
+endfunction
+
 
 "==================================================
 " VIM configurations
@@ -123,7 +152,17 @@ function! TabToggle()
 		set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 	endif
 endfunction
-nnoremap <F9> mz:execute TabToggle()<CR>'z
+nnoremap <silent> <F9> mz:execute TabToggle()<CR>'z
+
+" Delete trailing whitespace on these file types,and restore cursor when done
+" https://stackoverflow.com/questions/35390415/cursor-jump-in-vim-after-save
+function! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+autocmd FileType h,c,cpp autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " Show line number
 set number numberwidth=4
@@ -167,6 +206,7 @@ endif
 highlight ColorColumn ctermbg=darkblue
 set colorcolumn=80
 
+" change default location of split window
 set splitright
 set splitbelow
 
@@ -192,10 +232,10 @@ set laststatus=2
 "==================================================
 
 " edit .vimrc
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <silent> <leader>ev :vsplit $MYVIMRC<cr>
 
 " load .vimrc
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <silent> <leader>sv :source $MYVIMRC<cr>
 
 " esc insert mode
 inoremap jk <esc>
@@ -206,108 +246,88 @@ vnoremap ui <esc>
 vnoremap <esc> <nop>
 
 " move to line head
-nnoremap <leader>h ^
+nnoremap <silent> <leader>h ^
 
 " move to line end
-nnoremap <leader>l $
+nnoremap <silent> <leader>l $
 
 " surround a word with "
-nnoremap <leader>"  viw<esc>a"<esc>hbi"<esc>lel
+nnoremap <silent> <leader>"  viw<esc>a"<esc>hbi"<esc>lel
 
-" F5 : open NERD Tree
-nnoremap <silent> <F5>  :NERDTreeToggle<CR>
 " F8 : highlight toggle
-nnoremap <F8> :set hlsearch!<CR>
+nnoremap <silent> <F8> :set hlsearch!<CR>
 
 " ------------
 " vim tab
 " ------------
-" nnoremap <C-l> :tabn<CR>
-" nnoremap <C-h> :tabp<CR>
-" nnoremap <Tab>l :tabn<CR>
-" nnoremap <Tab>h :tabp<CR>
-nnoremap tg :tabp<CR>
+" nnoremap <silent> <C-l> :tabn<CR>
+" nnoremap <silent> <C-h> :tabp<CR>
+" nnoremap <silent> <Tab>l :tabn<CR>
+" nnoremap <silent> <Tab>h :tabp<CR>
+nnoremap <silent> tg :tabp<CR>
 " <C-n> : new tab. This usage rate is low. Comment it out.
-" nnoremap <C-n> :tabnew<CR>
+" nnoremap <silent> <C-n> :tabnew<CR>
 
 
 " ------------
 " vim window
 " ------------
 " jump to next right-down/top-left and round back
-nnoremap <C-j> :wincmd w<CR>
-nnoremap <C-k> :wincmd W<CR>
-nnoremap <C-h> :wincmd W<CR>
-nnoremap <C-l> :wincmd w<CR>
+nnoremap <silent> <C-j> :wincmd w<CR>
+nnoremap <silent> <C-k> :wincmd W<CR>
+nnoremap <silent> <C-h> :wincmd W<CR>
+nnoremap <silent> <C-l> :wincmd w<CR>
 " jump between
-nnoremap <C-p> :wincmd p<CR>
+nnoremap <silent> <C-p> :wincmd p<CR>
 " create new window and edit in it
-nnoremap <C-w>\ :vs<CR>:wincmd w<CR>
-nnoremap <C-w>- :sp<CR>:wincmd w<CR>
+nnoremap <silent> <C-w>\ :vs<CR>:wincmd w<CR>
+nnoremap <silent> <C-w>- :sp<CR>:wincmd w<CR>
 
 
 " ------------
 " ctags
 " ------------
 " preview tag
-" nnoremap <leader>ic :pc<cr>
-" nnoremap <leader>ii :ptag <c-r><c-w><cr>
-" nnoremap <leader>ij :ptnext<cr>
-" nnoremap <leader>ik :ptp<cr>
-nnoremap <leader>o :PreviewClose<cr>
-nnoremap <space> :PreviewTag<cr>
-nnoremap <leader>i :PreviewGoto edit<cr>
-nnoremap <leader>t :PreviewGoto tabe<cr>
-nnoremap <leader>f :PreviewSignature!<cr>
-nnoremap <leader>k :PreviewScroll -1<cr>
-nnoremap <leader>j :PreviewScroll +1<cr>
-nnoremap <leader>f <c-\><c-o>:PreviewSignature!<cr>
+" nnoremap <silent> <leader>ic :pc<cr>
+" nnoremap <silent> <leader>ii :ptag <c-r><c-w><cr>
+" nnoremap <silent> <leader>ij :ptnext<cr>
+" nnoremap <silent> <leader>ik :ptp<cr>
+nnoremap <silent> <leader>o :PreviewClose<cr>
+nnoremap <silent> <space> :PreviewTag<cr>
+nnoremap <silent> <leader>i :PreviewGoto edit<cr>
+nnoremap <silent> <leader>t :PreviewGoto tabe<cr>
+nnoremap <silent> <leader>f :PreviewSignature!<cr>
+nnoremap <silent> <leader>k :PreviewScroll -1<cr>
+nnoremap <silent> <leader>j :PreviewScroll +1<cr>
+nnoremap <silent> <leader>f <c-\><c-o>:PreviewSignature!<cr>
 " inoremap <leader>k <c-\><c-o>:PreviewScroll -1<cr>
 " inoremap <leader>j <c-\><c-o>:PreviewScroll +1<cr>
 
-" ------------
-" UltiSnips
-" ------------
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-" Other key bindings are not work, e.g. c-f, c-d, c-r, c-g
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" Creating/Editing path for private snips
-let g:UltiSnipsSnippetsDir=$HOME.'/config/mysnips'
-" Searching path of snips
-let g:UltiSnipsSnippetDirectories=['UltiSnips', $HOME.'/config/mysnips']
-" Edit snips in split window
-let g:UltiSnipsEditSplit="vertical"
-
-" Edit snips
-nnoremap <leader>es :UltiSnipsEdit<cr>
 
 " ------------
 " others
 " ------------
 " don't want to press <CR>
-nnoremap <leader>q :q<CR>
+nnoremap <silent> <leader>q :q<CR>
 
 " quick save and leave and save a <cr>
-nnoremap <leader>w :w<CR>
+nnoremap <silent> <leader>w :w<CR>
 
 " Enter : insert new line after current line
-nnoremap <Enter> o<Esc>
+nnoremap <silent> <Enter> o<Esc>
 
 " <C-s>  : save file in normal/insert mode. Note: add 'stty -ixon' in .bashrc
 " or .bash_profile to prevent hanged scroll
-nnoremap <C-s> :w<CR>
+nnoremap <silent> <C-s> :w<CR>
 inoremap <C-s> <ESC>:w<CR>
 
 " mimic Ctrl-C and Ctrl-v on windows
 vnoremap <leader>c :w! ~/.vimcp<CR>
-nnoremap <leader>v :r ~/.vimcp<CR>
+nnoremap <silent> <leader>v :r ~/.vimcp<CR>
 
 " replace complete word under cursor
 " add options, 'c' confirm, 'g' greedy, 'I' case-sensitive, after 2nd /
-nnoremap <leader>s :%s/\<<C-r><C-w>\>//cg<Left><Left><Left>
+nnoremap <silent> <leader>s :%s/\<<C-r><C-w>\>//cg<Left><Left><Left>
 
 "==================================================
 " from vim wiki 'Quick command in insert mode'
@@ -354,10 +374,10 @@ cabbrev tn tabnew
 "==================================================
 
 " prepend // at line head
-nnoremap <leader>/ I//<ESC>
+nnoremap <silent> <leader>/ I//<ESC>
 
 " remove first found '//'
-nnoremap <leader>d/ :s:\(\s\=\)\/\/:\1:<ESC>
+nnoremap <silent> <leader>d/ :s:\(\s\=\)\/\/:\1:<ESC>
 
 " surround line with /* */
-nnoremap <leader>* I/* <ESC>A */<ESC>
+nnoremap <silent> <leader>* I/* <ESC>A */<ESC>
