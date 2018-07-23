@@ -111,7 +111,7 @@ let Tlist_Use_Right_Window = 1
 " winmanager
 "-------------
 " Toggle winmanager
-nnoremap <silent> <F4> :WMToggle<cr>
+nnoremap <silent> <F7> :WMToggle<cr>
 
 " Add NERDTree
 let g:NERDTree_title='NERD Tree'
@@ -264,6 +264,8 @@ nnoremap <silent> <F8> :set hlsearch!<CR>
 " nnoremap <silent> <C-h> :tabp<CR>
 " nnoremap <silent> <Tab>l :tabn<CR>
 " nnoremap <silent> <Tab>h :tabp<CR>
+nnoremap <silent> <F5> :tabn<CR>
+nnoremap <silent> <F6> :tabp<CR>
 nnoremap <silent> tg :tabp<CR>
 " <C-n> : new tab. This usage rate is low. Comment it out.
 " nnoremap <silent> <C-n> :tabnew<CR>
