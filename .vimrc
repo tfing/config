@@ -55,6 +55,8 @@ let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
 let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
 let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
+let g:gutentags__trace = 1
+
 " ------------
 " UltiSnips
 " ------------
@@ -86,7 +88,7 @@ let NERDTreeShowBookmarks = 1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary" ) | q | endif
 
 " F5 : open NERD Tree
-" nnoremap <silent> <F5>  :NERDTreeToggle<CR>
+nnoremap <silent> <F7>  :NERDTreeToggle<CR>
 
 "-------------
 " NERDCommenter
@@ -103,7 +105,7 @@ let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
 "-------------
 " Taglist
 "-------------
-" nnoremap <silent> <F6> :TlistToggle<CR>
+nnoremap <silent> <F8> :TlistToggle<CR>
 let Tlist_Exit_OnlyWindow = 1
 let Tlist_Use_Right_Window = 1
 
@@ -111,7 +113,7 @@ let Tlist_Use_Right_Window = 1
 " winmanager
 "-------------
 " Toggle winmanager
-nnoremap <silent> <F7> :WMToggle<cr>
+nnoremap <silent> <leader>0 :WMToggle<cr>
 
 " Add NERDTree
 let g:NERDTree_title='NERD Tree'
@@ -255,7 +257,7 @@ nnoremap <silent> <leader>l g_
 nnoremap <silent> <leader>"  viw<esc>a"<esc>hbi"<esc>lel
 
 " F8 : highlight toggle
-nnoremap <silent> <F8> :set hlsearch!<CR>
+" nnoremap <silent> <F8> :set hlsearch!<CR>
 
 " ------------
 " vim tab
@@ -264,8 +266,8 @@ nnoremap <silent> <C-l> :tabn<CR>
 nnoremap <silent> <C-h> :tabp<CR>
 " nnoremap <silent> <Tab>l :tabn<CR>
 " nnoremap <silent> <Tab>h :tabp<CR>
-nnoremap <silent> <F5> :tabn<CR>
-nnoremap <silent> <F6> :tabp<CR>
+nnoremap <silent> <F6> :tabn<CR>
+nnoremap <silent> <F5> :tabp<CR>
 nnoremap <silent> tg :tabp<CR>
 " <C-n> : new tab. This usage rate is low. Comment it out.
 " nnoremap <silent> <C-n> :tabnew<CR>
@@ -358,10 +360,10 @@ inoremap WQ <ESC>:wq<CR>
 "==================================================
 
 " Type
-iabbrev u32 uint32_t
-iabbrev i32 int32_t
-iabbrev u8 uint8_t
-iabbrev i8 int8_t
+" iabbrev u32 uint32_t
+" iabbrev i32 int32_t
+" iabbrev u8 uint8_t
+" iabbrev i8 int8_t
 
 " insert mode
 iabbrev @@ tf1515@gmail.com
