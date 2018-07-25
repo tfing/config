@@ -162,7 +162,7 @@ function! <SID>StripTrailingWhitespaces()
     %s/\s\+$//e
     call cursor(l, c)
 endfun
-autocmd FileType h,c,cpp autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+autocmd FileType vim,h,c,cpp autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " Show line number
 set number numberwidth=4
@@ -249,7 +249,7 @@ vnoremap <esc> <nop>
 nnoremap <silent> <leader>h ^
 
 " move to line end
-nnoremap <silent> <leader>l $
+nnoremap <silent> <leader>l g_
 
 " surround a word with "
 nnoremap <silent> <leader>"  viw<esc>a"<esc>hbi"<esc>lel
@@ -260,8 +260,8 @@ nnoremap <silent> <F8> :set hlsearch!<CR>
 " ------------
 " vim tab
 " ------------
-" nnoremap <silent> <C-l> :tabn<CR>
-" nnoremap <silent> <C-h> :tabp<CR>
+nnoremap <silent> <C-l> :tabn<CR>
+nnoremap <silent> <C-h> :tabp<CR>
 " nnoremap <silent> <Tab>l :tabn<CR>
 " nnoremap <silent> <Tab>h :tabp<CR>
 nnoremap <silent> <F5> :tabn<CR>
@@ -277,8 +277,8 @@ nnoremap <silent> tg :tabp<CR>
 " jump to next right-down/top-left and round back
 nnoremap <silent> <C-j> :wincmd w<CR>
 nnoremap <silent> <C-k> :wincmd W<CR>
-nnoremap <silent> <C-h> :wincmd W<CR>
-nnoremap <silent> <C-l> :wincmd w<CR>
+" nnoremap <silent> <C-h> :wincmd W<CR>
+" nnoremap <silent> <C-l> :wincmd w<CR>
 " jump between
 nnoremap <silent> <C-p> :wincmd p<CR>
 " create new window and edit in it
