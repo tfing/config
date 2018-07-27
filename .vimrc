@@ -87,8 +87,11 @@ let NERDTreeShowBookmarks = 1
 " Close VIM if the only left open window is NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary" ) | q | endif
 
-" F5 : open NERD Tree
-nnoremap <silent> <F7>  :NERDTreeToggle<CR>
+" open NERD Tree
+nnoremap <silent> <F7> :NERDTreeToggle<CR>
+let g:NERDTreeMapJumpNextSibling = ''
+let g:NERDTreeMapJumpPrevSibling = ''
+
 
 "-------------
 " NERDCommenter
@@ -155,6 +158,7 @@ function! TabToggle()
 	endif
 endfunction
 nnoremap <silent> <F9> mz:execute TabToggle()<CR>'z
+nnoremap <silent> <F10> :set list!<cr>
 
 " Delete trailing whitespace on these file types,and restore cursor when done
 " https://stackoverflow.com/questions/35390415/cursor-jump-in-vim-after-save
@@ -277,8 +281,8 @@ nnoremap <silent> tg :tabp<CR>
 " vim window
 " ------------
 " jump to next right-down/top-left and round back
-nnoremap <silent> <C-j> :wincmd w<CR>
-nnoremap <silent> <C-k> :wincmd W<CR>
+nnoremap <silent> <C-j> :wincmd W<CR>
+nnoremap <silent> <C-k> :wincmd w<CR>
 " nnoremap <silent> <C-h> :wincmd W<CR>
 " nnoremap <silent> <C-l> :wincmd w<CR>
 " jump between
@@ -286,7 +290,6 @@ nnoremap <silent> <C-p> :wincmd p<CR>
 " create new window and edit in it
 nnoremap <silent> <C-w>\ :vs<CR>:wincmd w<CR>
 nnoremap <silent> <C-w>- :sp<CR>:wincmd w<CR>
-
 
 " ------------
 " ctags
@@ -326,8 +329,10 @@ nnoremap <silent> <C-s> :w<CR>
 inoremap <C-s> <ESC>:w<CR>
 
 " mimic Ctrl-C and Ctrl-v on windows
-vnoremap <leader>c :w! ~/.vimcp<CR>
+vnoremap <silent> <leader>c :w! ~/.vimcp<CR>
 nnoremap <silent> <leader>v :r ~/.vimcp<CR>
+nnoremap <silent> <leader>y viw"0y
+nnoremap <silent> <leader>p viw"0p
 
 " replace complete word under cursor
 " add options, 'c' confirm, 'g' greedy, 'I' case-sensitive, after 2nd /
