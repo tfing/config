@@ -312,6 +312,13 @@ inoremap <leader>b <esc>:ls<cr>:b<space>
 vnoremap <leader>b <esc>:ls<cr>:b<space>
 
 " ------------
+" vim quickfix
+" ------------
+" next/prev quickfix
+nnoremap <leader>g :cn<cr>
+nnoremap <leader>G :cp<cr>
+
+" ------------
 " ctags
 " ------------
 " preview tag
