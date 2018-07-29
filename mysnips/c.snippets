@@ -1,13 +1,13 @@
-snippet pg "debug print" b
+snippet dg "debug print" b
 printf("%d %s$1\r\n", __LINE__, __FUNCTION__);
 endsnippet
 
-snippet u32 "" i
+snippet u3 "" i
 uint32_t ${1:i}
 endsnippet
 
-snippet i32 "" i
-uint32_t ${1:i}
+snippet i3 "" i
+int32_t ${1:i}
 endsnippet
 
 snippet u8 "" i
@@ -15,9 +15,31 @@ uint8_t ${1:i}
 endsnippet
 
 snippet i8 "" i
-uint8_t ${1:i}
+int8_t ${1:i}
 endsnippet
 
+snippet uf "" i
+${1:static} uint32_t ${2:name}(${3:void})
+{
+	$4
+	return 0;
+}
+endsnippet
+
+snippet if "" i
+${1:static} int32_t ${2:name}(${3:void})
+{
+	$4
+	return 0;
+}
+endsnippet
+
+snippet vf "" i
+${1:static} void ${2:name}(${3:void})
+{
+	$4
+}
+endsnippet
 
 snippet fori "" b
 for (${1:i}; $1 < $2; $1++) {
