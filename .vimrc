@@ -17,7 +17,6 @@ Plug 'farmergreg/vim-lastplace'
 Plug 'vim-scripts/taglist.vim'
 Plug 'vim-scripts/winmanager'
 " Plug 'Valloric/YouCompleteMe'
-" Plug 'honza/vim-snippets'
 call plug#end()
 
 filetype plugin indent on
@@ -162,7 +161,7 @@ nnoremap <silent> <F10> :set list!<cr>
 
 " Delete trailing whitespace on these file types,and restore cursor when done
 " https://stackoverflow.com/questions/35390415/cursor-jump-in-vim-after-save
-function! <SID>StripTrailingWhitespaces()
+function! s:StripTrailingWhitespaces()
     let l = line(".")
     let c = col(".")
     %s/\s\+$//e
@@ -182,6 +181,8 @@ set mouse=a
 
 " highlight search key
 set hlsearch
+" show search result during typing
+set hlsearch incsearch
 
 " keep last 3 line when scroll
 set scrolloff=3
@@ -221,14 +222,15 @@ set splitbelow
 "==================================================
 
 set statusline=
-set statusline+=%1*\[%n]                                  "buffernr
+" set statusline+=%1*\[%n]                                  "buffernr
+set statusline+=%1*\[%{winnr()}]                          "winnr
 set statusline+=%2*\ %<%F\                                "File+path
 set statusline+=%3*\ %=\ %{''.(&fenc!=''?&fenc:&enc).''}\ "Encoding
 set statusline+=%4*\ %{(&bomb?\",BOM\":\"\")}\            "Encoding2
 set statusline+=%5*\ %{&ff}\                              "FileFormat (dos/unix..)
 set statusline+=%6*\ row:%l/%L\ col:%03c\ (%03p%%)\       "Rownumber/total (%)
 set statusline+=%0*\ \ %m%r%w\ %P\ \                      "Modified? Readonly? Top/bot.
-"set statusline+=%{gutentags#statusline()} "Progress of updating ctags
+" set statusline+=%0*\ %{gutentags#statusline()} "Progress of updating ctags
 hi User2 ctermfg=3  ctermbg=0
 hi User6 ctermfg=3  ctermbg=4
 set laststatus=2
@@ -266,8 +268,8 @@ nnoremap <silent> <leader>"  viw<esc>a"<esc>hbi"<esc>lel
 " ------------
 " vim tab
 " ------------
-nnoremap <silent> <C-l> :tabn<CR>
-nnoremap <silent> <C-h> :tabp<CR>
+" nnoremap <silent> <C-l> :tabn<CR>
+" nnoremap <silent> <C-h> :tabp<CR>
 " nnoremap <silent> <Tab>l :tabn<CR>
 " nnoremap <silent> <Tab>h :tabp<CR>
 nnoremap <silent> <F6> :tabn<CR>
@@ -290,6 +292,24 @@ nnoremap <silent> <C-p> :wincmd p<CR>
 " create new window and edit in it
 nnoremap <silent> <C-w>\ :vs<CR>:wincmd w<CR>
 nnoremap <silent> <C-w>- :sp<CR>:wincmd w<CR>
+" resize width
+nnoremap <silent> <C-w>, :vertical resize +15<cr>
+nnoremap <silent> <C-w>. :vertical resize -15<cr>
+
+" ------------
+" vim buffer
+" ------------
+"  next/prev buffer
+nnoremap <leader>n :bn<cr>
+nnoremap <leader>m :bp<cr>
+" alternate buffer
+nnoremap <leader>u :b#<cr>
+inoremap <leader>u <esc>:b#<cr>
+vnoremap <leader>u <esc>:b#<cr>
+" list buffers and wait for input
+nnoremap <leader>b :ls<cr>:b<space>
+inoremap <leader>b <esc>:ls<cr>:b<space>
+vnoremap <leader>b <esc>:ls<cr>:b<space>
 
 " ------------
 " ctags
