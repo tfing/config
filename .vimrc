@@ -319,7 +319,7 @@ vnoremap <leader>b <esc>:ls<cr>:b<space>
 " nnoremap <silent> <leader>ii :ptag <c-r><c-w><cr>
 " nnoremap <silent> <leader>ij :ptnext<cr>
 " nnoremap <silent> <leader>ik :ptp<cr>
-nnoremap <silent> <leader>o :PreviewClose<cr>
+nnoremap <silent> <leader>c :PreviewClose<cr>
 nnoremap <silent> <space> :PreviewTag<cr>
 nnoremap <silent> <leader>i :PreviewGoto edit<cr>
 nnoremap <silent> <leader>t :PreviewGoto tabe<cr>
@@ -340,8 +340,9 @@ nnoremap <silent> <leader>q :q<CR>
 " quick save and leave and save a <cr>
 nnoremap <silent> <leader>w :w<CR>
 
-" Enter : insert new line after current line
-nnoremap <silent> <Enter> o<Esc>
+" Insert new line after current line
+" nnoremap <silent> <Enter> o<Esc>
+nnoremap <silent> <leader>o o<esc>
 
 " <C-s>  : save file in normal/insert mode. Note: add 'stty -ixon' in .bashrc
 " or .bash_profile to prevent hanged scroll
