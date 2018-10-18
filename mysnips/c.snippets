@@ -1,5 +1,9 @@
 snippet dg "debug print" b
-printf("%d %s$1\r\n", __LINE__, __FUNCTION__);
+dbg_print("%s %d$1\r\n", __FUNCTION__, __LINE__);
+endsnippet
+
+snippet eg "debug print" b
+exc_print("%s %d$1\r\n", __FUNCTION__, __LINE__);
 endsnippet
 
 snippet u3 "" i
@@ -18,7 +22,7 @@ snippet i8 "" i
 int8_t ${1:i}
 endsnippet
 
-snippet uf "" i
+snippet fu "" i
 ${1:static} uint32_t ${2:name}(${3:void})
 {
 	$4
@@ -26,7 +30,7 @@ ${1:static} uint32_t ${2:name}(${3:void})
 }
 endsnippet
 
-snippet if "" i
+snippet fi "" i
 ${1:static} int32_t ${2:name}(${3:void})
 {
 	$4
@@ -34,38 +38,44 @@ ${1:static} int32_t ${2:name}(${3:void})
 }
 endsnippet
 
-snippet vf "" i
+snippet fv "" i
 ${1:static} void ${2:name}(${3:void})
 {
 	$4
 }
 endsnippet
 
-snippet fori "" b
-for (${1:i}; $1 < $2; $1++) {
-
+snippet {{ "" i
+{
+	$1
 }
 endsnippet
 
-snippet iff "" b
+snippet for "" b
+for (${1:i} = 0; $1 < $2; $1++) {
+	$3
+}
+endsnippet
+
+snippet if "" b
 if ($1) {
-
+	$2
 }
 endsnippet
 
-snippet ife ""
+snippet ef ""
 else if ($1) {
-
+	$2
 }
 endsnippet
 
-snippet els ""
+snippet el ""
 else {
-
+	$1
 }
 endsnippet
 
-snippet mhg "mtk header guard" b
+snippet mh "mtk header guard" b
 /* Copyright Statement:
  *
  * This software/firmware and related documentation ("MediaTek Software") are
