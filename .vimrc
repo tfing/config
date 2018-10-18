@@ -76,7 +76,7 @@ let g:UltiSnipsSnippetDirectories=['UltiSnips', $HOME.'/config/mysnips']
 let g:UltiSnipsEditSplit="vertical"
 
 " Edit snips
-nnoremap <silent> <leader>es :UltiSnipsEdit<cr>
+nnoremap <silent> <leader>eu :UltiSnipsEdit<cr>
 
 "-------------
 " NERDTree
@@ -97,7 +97,7 @@ let g:NERDTreeMapJumpPrevSibling = ''
 "-------------
 let NERDCommentEmptyLines = 1
 let NERDSpaceDelims = 1
-
+let g:NERDAltDelims_cpp = 1
 "-------------
 " YouCompleteMe
 "-------------
@@ -315,6 +315,7 @@ vnoremap <leader>b <esc>:ls<cr>:b<space>
 " vim quickfix
 " ------------
 " next/prev quickfix
+nnoremap <leader>r :grep -R --exclude-dir={*git,out}  .<left><left>
 nnoremap <leader>g :cn<cr>
 nnoremap <leader>G :cp<cr>
 
@@ -326,14 +327,14 @@ nnoremap <leader>G :cp<cr>
 " nnoremap <silent> <leader>ii :ptag <c-r><c-w><cr>
 " nnoremap <silent> <leader>ij :ptnext<cr>
 " nnoremap <silent> <leader>ik :ptp<cr>
-nnoremap <silent> <leader>c :PreviewClose<cr>
+nnoremap <silent> <leader>k :PreviewClose<cr>
 nnoremap <silent> <space> :PreviewTag<cr>
-nnoremap <silent> <leader>i :PreviewGoto edit<cr>
+nnoremap <silent> <leader>i :PreviewGoto edit<cr>:PreviewClose<cr>
 nnoremap <silent> <leader>t :PreviewGoto tabe<cr>
 nnoremap <silent> <leader>f :PreviewSignature!<cr>
-nnoremap <silent> <leader>k :PreviewScroll -1<cr>
-nnoremap <silent> <leader>j :PreviewScroll +1<cr>
-nnoremap <silent> <leader>f <c-\><c-o>:PreviewSignature!<cr>
+" nnoremap <silent> <leader>k :PreviewScroll -1<cr>
+" nnoremap <silent> <leader>j :PreviewScroll +1<cr>
+" nnoremap <silent> <leader>f <c-\><c-o>:PreviewSignature!<cr>
 " inoremap <leader>k <c-\><c-o>:PreviewScroll -1<cr>
 " inoremap <leader>j <c-\><c-o>:PreviewScroll +1<cr>
 
@@ -359,12 +360,14 @@ inoremap <C-s> <ESC>:w<CR>
 " mimic Ctrl-C and Ctrl-v on windows
 vnoremap <silent> <leader>c :w! ~/.vimcp<CR>
 nnoremap <silent> <leader>v :r ~/.vimcp<CR>
-nnoremap <silent> <leader>y viw"0y
-nnoremap <silent> <leader>p viw"0p
+nnoremap <silent> <leader>y "ay
+vnoremap <silent> <leader>y "ay
+nnoremap <silent> <leader>p h"apl
+vnoremap <silent> <leader>p "ap
 
 " replace complete word under cursor
 " add options, 'c' confirm, 'g' greedy, 'I' case-sensitive, after 2nd /
-nnoremap <silent> <leader>s :%s/\<<C-r><C-w>\>//cg<Left><Left><Left>
+nnoremap <leader>s :%s/\<<C-r><C-w>\>//cg<Left><Left><Left>
 
 "==================================================
 " from vim wiki 'Quick command in insert mode'
