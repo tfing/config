@@ -24,6 +24,11 @@ fi
 # Environment Variables
 # #####################
 
+# support 256 color 
+#export TERM="xterm-256color"
+# Let tmux can recognize fucntion key when using putty
+export TERM=putty
+
 # TMP and TEMP are defined in the Windows environment.  Leaving
 # them set to the default Windows temporary directory can have
 # unexpected consequences.
@@ -168,9 +173,6 @@ declare -x LS_COLORS="di=01;36:ln=01;31:"
 
 # disable hanged scroll
 stty -ixon 
-
-# support 256 color 
-export TERM="xterm-256color"
 
 function git_branch {
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return;
