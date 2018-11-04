@@ -24,10 +24,12 @@ fi
 # Environment Variables
 # #####################
 
-# support 256 color 
+# Looks like I don't have to overwrite the setting of TERM. Let system do this
+# for me.
+# support 256 color
 #export TERM="xterm-256color"
 # Let tmux can recognize fucntion key when using putty
-export TERM=putty
+#export TERM=putty
 
 # TMP and TEMP are defined in the Windows environment.  Leaving
 # them set to the default Windows temporary directory can have
@@ -130,7 +132,7 @@ alias rm='rm -Iv'	# -I ask once for removing multiple files
 GREP_OPTIONS="-rnI --exclude-dir={prebuilt,.git} --exclude={tags,*.d,*.o,*.a,*.map} --color"
 alias grep="grep --color"
 alias gR='grep $GREP_OPTIONS'
-alias gr='gR -i' #ignore case(-i) 
+alias gr='gR -i' #ignore case(-i)
 alias fgR="fgrep $GREP_OPTIONS" # search fixed string for speed
 alias fgr='fgR -i' #ignore case(-i)
 
@@ -142,7 +144,7 @@ alias ls='ls -hF --color=tty'                   # classify files in colour
 # alias dir='ls --color=auto --format=vertical'
 # alias vdir='ls --color=auto --format=long'
 alias ll='ls -l --block-size=KB'                 # long list
-alias la='ls -al'                                # all 
+alias la='ls -al'                                # all
 alias lc='ls -C'                                 # show by column
 alias lt='ll -t'                                 # show by time, newest at top
 alias my='sh mybuild.sh'
@@ -172,7 +174,7 @@ alias      .6='cd ../../../../../..'
 declare -x LS_COLORS="di=01;36:ln=01;31:"
 
 # disable hanged scroll
-stty -ixon 
+stty -ixon
 
 function git_branch {
     ref=$(git symbolic-ref HEAD 2> /dev/null) || return;
