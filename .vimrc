@@ -315,7 +315,7 @@ vnoremap <leader>b <esc>:ls<cr>:b<space>
 " vim quickfix
 " ------------
 " next/prev quickfix
-nnoremap <leader>r :grep -R --exclude-dir={*git,out}  .<left><left>
+nnoremap <leader>r :grep -R --exclude-dir={*git,out,mypack}  .<left><left>
 nnoremap <leader>g :cn<cr>
 nnoremap <leader>G :cp<cr>
 
@@ -362,7 +362,7 @@ vnoremap <silent> <leader>c :w! ~/.vimcp<CR>
 nnoremap <silent> <leader>v :r ~/.vimcp<CR>
 nnoremap <silent> <leader>y "ay
 vnoremap <silent> <leader>y "ay
-nnoremap <silent> <leader>p h"apl
+nnoremap <silent> <leader>p "ap
 vnoremap <silent> <leader>p "ap
 
 " replace complete word under cursor
