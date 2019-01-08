@@ -196,6 +196,8 @@ export PATH=$ARCGNU/bin:$ARCGNU/eclipse:$PATH
 NSIM=$HOME/test/MetaWare_Linux/nSIM/nSIM
 export PATH=$NSIM/bin:$PATH
 
+source ~/config/git-completion.bash
+
 if [ -f /proj/mtk15399/.bashrc_15399 ]; then
     source /proj/mtk15399/.bashrc_15399
 fi
