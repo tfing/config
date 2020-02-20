@@ -33,6 +33,9 @@
 	sf = svn fetch
 	sd = svn dcommit
 	ss = stash
+	ssi = stash push
+	sso = stash pop
+	ssl = stash list
 
 [color]
 	ui = auto
