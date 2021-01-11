@@ -12,21 +12,23 @@
 	st = status -s -b
 	br = branch
 	re = remote
-	lg2 = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	; lg2 = log --graph --pretty=format:'%C(yellow)%h%Creset -%C(bold red)%d%Creset %C(bold green)%s%C(reset) %C(bold white)(%cr) %C(bold cyan)<%an>%Creset' --abbrev-commit --date=relative
+	lg = log --graph --decorate=full --format=format:'%C(yellow)%h%C(reset) - %C(bold white)(%ci)%C(reset) %C(bold green)%f%C(reset)%C(bold red)%d%C(reset) %C(white)%s%C(reset)%C(bold cyan) - <%cn>%C(reset)'
 	lgs = log --graph --all --decorate=full --format=format:'%C(yellow)%h%C(reset) - %C(bold white)(%ci)%C(reset) %C(bold green)%f%C(reset)%C(bold red)%d%C(reset) %C(white)%s%C(reset)%C(bold cyan) - <%cn>%C(reset)'
-	lg = log --graph --stat
+	lgt = log --graph --stat
+	lgn = log --graph --decorate=full --oneline
 	mf = merge --no-ff
-    mg = merge
+	mg = merge
 	rb = rebase
-    rbi = rebase --interactive
-    rbc = rebase --continue
-    rba = rebase --abort
+	rbi = rebase --interactive
+	rbc = rebase --continue
+	rba = rebase --abort
 	pick = cherry-pick
 	pickc = cherry-pick --continue
 	picka = cherry-pick --abort
 	sh = show
 	aa = add --all :/
-    ap = add --patch
+	ap = add --patch
 	ru = remote update --prune
 	sf = svn fetch
 	sd = svn dcommit
