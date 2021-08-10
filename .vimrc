@@ -7,7 +7,7 @@ filetype off
 
 call plug#begin('~/.vim/bundle')
 Plug 'junegunn/vim-plug'
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 Plug 'steffanc/cscopemaps.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter' "comment: <leader>cc, uncomment: <leader>cu
@@ -60,23 +60,23 @@ let g:gutentags__trace = 1
 " UltiSnips
 " ------------
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsExpandTrigger="<tab>"
 
 " Other key bindings are not work, e.g. c-f, c-d, c-r, c-g
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Creating/Editing path for private snips
-let g:UltiSnipsSnippetsDir=$HOME.'/config/mysnips'
+"let g:UltiSnipsSnippetsDir=$HOME.'/config/mysnips'
 
 " Searching path of snips
-let g:UltiSnipsSnippetDirectories=['UltiSnips', $HOME.'/config/mysnips']
+"let g:UltiSnipsSnippetDirectories=['UltiSnips', $HOME.'/config/mysnips']
 
 " Edit snips in split window
-let g:UltiSnipsEditSplit="vertical"
+"let g:UltiSnipsEditSplit="vertical"
 
 " Edit snips
-nnoremap <silent> <leader>eu :UltiSnipsEdit<cr>
+" nnoremap <silent> <leader>eu :UltiSnipsEdit<cr>
 
 "-------------
 " NERDTree
@@ -148,7 +148,7 @@ set clipboard=unnamedplus
 " Replace tab with 4 spaces as default
 " <F9> to change tab action
 " from http://vim.wikia.com/wiki/Toggle_between_tabs_and_spaces
-set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
 function! TabToggle()
 	if &expandtab
 		set tabstop=8 softtabstop=8 shiftwidth=8 noexpandtab
@@ -172,8 +172,9 @@ autocmd FileType vim,h,c,cpp autocmd BufWritePre * :call <SID>StripTrailingWhite
 " Show line number
 set number numberwidth=4
 
-" Enable mouse
-set mouse=a
+" Disable mouse
+set mouse=
+set ttymouse=
 
 " significant cursor line
 " A little bit annoying when using '_' in text
@@ -265,6 +266,8 @@ nnoremap <silent> <leader>"  viw<esc>a"<esc>hbi"<esc>lel
 " F8 : highlight toggle
 " nnoremap <silent> <F8> :set hlsearch!<CR>
 
+nnoremap <leader>r :grep -R --exclude-dir={*git,out,mypack}  .<left><left>
+
 " ------------
 " vim tab
 " ------------
@@ -315,7 +318,6 @@ vnoremap <leader>b <esc>:ls<cr>:b<space>
 " vim quickfix
 " ------------
 " next/prev quickfix
-nnoremap <leader>r :grep -R --exclude-dir={*git,out,mypack}  .<left><left>
 nnoremap <leader>g :cn<cr>
 nnoremap <leader>G :cp<cr>
 
@@ -401,9 +403,9 @@ inoremap WQ <ESC>:wq<CR>
 " iabbrev u8 uint8_t
 " iabbrev i8 int8_t
 
-" insert mode
-iabbrev @@ tf1515@gmail.com
-iabbrev ssig <cr>TingHan<cr>tf1515@gmail.com
+" insert mode (doesn't use it)
+" iabbrev @@ tf1515@gmail.com
+" iabbrev ssig <cr>TingHan<cr>tf1515@gmail.com
 
 " command mode
 " expand 'tn' to 'tabnew' automatically when typing command
