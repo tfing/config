@@ -5,10 +5,11 @@
 https://github.com/VundleVim/Vundle.vim#quick-start
 
 ```
-git clone https://github.com/tfing/config.git ~
-bash ~/install.sh
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-vim +PluginInstall +qall
+git clone https://github.com/tfing/config.git
+
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+exec ":PlugInstall" in vim
 ```
 
 ## Hotkey
