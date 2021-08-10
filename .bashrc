@@ -129,7 +129,7 @@ alias rm='rm -Iv'	# -I ask once for removing multiple files
 # recursive search(-r), show line number(-n)
 # ignore binary(-I), ignore case(-i)
 # show differences in colour (--color)
-GREP_OPTIONS="-rnI --exclude-dir={prebuilt,.git} --exclude={tags,*.d,*.o,*.a,*.map} --color"
+GREP_OPTIONS="-rnI --exclude-dir={prebuilt,.git} --exclude={tags,*.d,*.o,*.a,*.map,*.opa,*.ipa,*.ti,*.dis} --color"
 alias grep="grep --color"
 alias gR='grep $GREP_OPTIONS'
 alias gr='gR -i' #ignore case(-i)
@@ -140,13 +140,13 @@ alias fgr='fgR -i' #ignore case(-i)
 alias ctags="ctags --exclude={*.o,*.d,*.a,*.map}"
 
 # Some shortcuts for different directory listings
-alias ls='ls -hF --color=tty'                   # classify files in colour
+alias ls='ls -F --color=tty'                   # classify files in colour
 # alias dir='ls --color=auto --format=vertical'
 # alias vdir='ls --color=auto --format=long'
-alias ll='ls -l --block-size=KB'                 # long list
-alias la='ls -al'                                # all
-alias lc='ls -C'                                 # show by column
-alias lt='ll -t'                                 # show by time, newest at top
+alias ll='ls -hl --block-size=KB'                 # long list
+alias la='ls -hal'                                # all
+alias lc='ls -hC'                                 # show by column
+alias lt='ll -ht'                                 # show by time, newest at top
 alias my='sh mybuild.sh'
 alias g='git'
 complete -o default -o nospace -F _git g
@@ -187,14 +187,17 @@ PS1='\[\e[1;32m\]\w\[\e[0m\] \[\e[1;34m\](\t)\[\e[0m\]\n\[\e[1;35m\]$(git_branch
 
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-export GOPATH=$HOME/gopath
-export PATH=$GOPATH:$GOPATH/bin:$PATH
+# export GOPATH=$HOME/gopath
+export VIMPATH=$HOME/local/bin
+CROSTOOLS=$HOME/cros-tools
+export PATH=$VIMPATH:$GOPATH:$GOPATH/bin:$PATH:$CROSTOOLS
 
 # VMWare toolchain
-ARCGNU=$HOME/arc_gnu
-export PATH=$ARCGNU/bin:$ARCGNU/eclipse:$PATH
-NSIM=$HOME/test/MetaWare_Linux/nSIM/nSIM
-export PATH=$NSIM/bin:$PATH
+# ARCGNU=$HOME/arc_gnu
+# export PATH=$ARCGNU/bin:$ARCGNU/eclipse:$PATH
+# NSIM=$HOME/test/MetaWare_Linux/nSIM/nSIM
+# export PATH=$NSIM/bin:$PATH
+# export PATH=~/bin:$PATH
 
 source ~/config/git-completion.bash
 
