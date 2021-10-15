@@ -129,12 +129,12 @@ alias rm='rm -Iv'	# -I ask once for removing multiple files
 # recursive search(-r), show line number(-n)
 # ignore binary(-I), ignore case(-i)
 # show differences in colour (--color)
-GREP_OPTIONS="-rnI --exclude-dir={prebuilt,.git} --exclude={tags,*.d,*.o,*.a,*.map,*.opa,*.ipa,*.ti,*.dis} --color"
-alias grep="grep --color"
+export GREP_OPTIONS='-rnI --exclude-dir={prebuilt,.git} --exclude=tags --exclude=\*.d --exclude=\*.o --exclude=\*.a --exclude=\*.map --exclude=\*.opa --exclude=\*.ipa --exclude=\*.ti --exclude=\*.dis --color'
+alias grep='grep --color'
 alias gR='grep $GREP_OPTIONS'
-alias gr='gR -i' #ignore case(-i)
-alias fgR="fgrep $GREP_OPTIONS" # search fixed string for speed
-alias fgr='fgR -i' #ignore case(-i)
+alias gr='grep $GREP_OPTIONS -i' #ignore case(-i)
+alias fgR='fgrep $GREP_OPTIONS' # search fixed string for speed
+alias fgr='fgrep $GREP_OPTIONS -i' #ignore case(-i)
 
 # "xxx={a,b,c}" is called "shell brace expansion"
 alias ctags="ctags --exclude={*.o,*.d,*.a,*.map}"
