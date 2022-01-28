@@ -27,6 +27,7 @@
 	pickc = cherry-pick --continue
 	picka = cherry-pick --abort
 	sh = show
+	shm = show --summary
 	aa = add --all :/
 	ap = add --patch
 	ru = remote update --prune
