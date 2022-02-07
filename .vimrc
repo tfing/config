@@ -212,7 +212,7 @@ endif
 
 " Highlight line 80 to check coding rule
 highlight ColorColumn ctermbg=darkblue
-set colorcolumn=80
+set colorcolumn=100
 
 " change default location of split window
 set splitright
