@@ -266,7 +266,11 @@ nnoremap <silent> <leader>"  viw<esc>a"<esc>hbi"<esc>lel
 " F8 : highlight toggle
 " nnoremap <silent> <F8> :set hlsearch!<CR>
 
-nnoremap <leader>r :grep -R --exclude-dir={*git,out,mypack}  .<left><left>
+if executable('rg')
+	set grepprg=rg\ --vimgrep\ --hidden
+endif
+nnoremap <leader>r :grep  .<left><left>
+" nnoremap <leader>r :grep -R --exclude-dir={*git,out,mypack}  .<left><left>
 
 " ------------
 " vim tab
