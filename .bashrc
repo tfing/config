@@ -205,4 +205,8 @@ if [ -f /proj/mtk15399/.bashrc_15399 ]; then
     source /proj/mtk15399/.bashrc_15399
 fi
 
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
+# improved cd, autojump + cd
+eval "$(zoxide init bash)"
