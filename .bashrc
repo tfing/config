@@ -189,6 +189,7 @@ export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quo
 
 # export GOPATH=$HOME/gopath
 export VIMPATH=$HOME/.local/bin
+export VIMRUNTIME=$HOME/.local/share/vim/vim81
 CROSTOOLS=$HOME/cros-tools
 export PATH=$VIMPATH:$GOPATH:$GOPATH/bin:$PATH:$CROSTOOLS
 
