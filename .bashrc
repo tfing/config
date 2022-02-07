@@ -188,7 +188,7 @@ PS1='\[\e[1;32m\]\w\[\e[0m\] \[\e[1;34m\](\t)\[\e[0m\]\n\[\e[1;35m\]$(git_branch
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # export GOPATH=$HOME/gopath
-export VIMPATH=$HOME/local/bin
+export VIMPATH=$HOME/.local/bin
 CROSTOOLS=$HOME/cros-tools
 export PATH=$VIMPATH:$GOPATH:$GOPATH/bin:$PATH:$CROSTOOLS
 
