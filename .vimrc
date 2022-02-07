@@ -318,8 +318,10 @@ vnoremap <leader>b <esc>:ls<cr>:b<space>
 " vim quickfix
 " ------------
 " next/prev quickfix
-nnoremap <leader>g :cn<cr>
-nnoremap <leader>G :cp<cr>
+nnoremap <leader>go :copen<cr>
+nnoremap <leader>gc :cclose<cr>
+nnoremap <leader>gn :cn<cr>
+nnoremap <leader>gp :cp<cr>
 
 " ------------
 " ctags
