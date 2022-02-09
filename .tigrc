@@ -1,0 +1,10 @@
+# Use Git's default (reverse chronological) order, never automatically
+# use topo-order for the commit graph
+set commit-order = default
+
+# Limit number of commits loaded
+# change it by 'tig -n <number>'
+set main-options = -n 5000
+
+# Don't show staged and unstaged changes in the main view
+set show-changes = no
