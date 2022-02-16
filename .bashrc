@@ -135,6 +135,7 @@ alias rm='rm -Iv'	# -I ask once for removing multiple files
 #alias gr='grep $MY_GREP_OPTIONS -i' #ignore case(-i)
 #alias fgR='fgrep $MY_GREP_OPTIONS' # search fixed string for speed
 #alias fgr='fgrep $MY_GREP_OPTIONS -i' #ignore case(-i)
+alias gr='rg'
 
 # "xxx={a,b,c}" is called "shell brace expansion"
 alias ctags="ctags --exclude={*.o,*.d,*.a,*.map}"
