@@ -12,9 +12,11 @@
 	st = status -s -b
 	br = branch
 	re = remote
-	lg = log --decorate=full --format=format:'%C(yellow)%h%C(reset) - %C(bold white)(%ci)%C(reset) %C(bold green)%f%C(reset)%C(bold red)%d%C(reset) %C(white)%s%C(reset)%C(bold cyan) - <%cn>%C(reset)'
-	lgs = log --graph --all --decorate=full --format=format:'%C(yellow)%h%C(reset) - %C(bold white)(%ci)%C(reset) %C(bold green)%f%C(reset)%C(bold red)%d%C(reset) %C(white)%s%C(reset)%C(bold cyan) - <%cn>%C(reset)'
-	lgt = log --stat
+	#lg = log --decorate=full --format=format:'%C(yellow)%h%C(reset) - %C(bold white)(%ci)%C(reset) %C(bold green)%f%C(reset)%C(bold red)%d%C(reset) %C(white)%s%C(reset)%C(bold cyan) - <%cn>%C(reset)'
+	lg = log --decorate=full --format=format:'%C(yellow)%h%C(reset) %C(bold white)(%ci)%C(reset) %C(bold green)%f%C(reset)%C(bold red)%d%C(reset) - <%cn>%C(reset)'
+	lgd = log --decorate=full --format=format:'%C(yellow)%h%C(reset) %C(bold green)%f%C(reset)%C(bold red)%d%C(reset) %C(white)%s%C(reset)%C(bold cyan) - <%cn>%C(reset)'
+	lga = log --graph --all --decorate=full --format=format:'%C(yellow)%h%C(reset) - %C(bold white)(%ci)%C(reset) %C(bold green)%f%C(reset)%C(bold red)%d%C(reset) %C(white)%s%C(reset)%C(bold cyan) - <%cn>%C(reset)'
+	lgst = log --stat
 	mf = merge --no-ff
 	mg = merge
 	rb = rebase
@@ -26,11 +28,12 @@
 	picka = cherry-pick --abort
 	ama = am --abort
 	amc = am --continue
+	amk = am --skip
 	sh = show
 	shm = show --summary
 	aa = add --all :/
 	ap = add --patch
-	ru = remote update --prune
+	ru = remote update
 	sf = svn fetch
 	sd = svn dcommit
 	ss = stash
